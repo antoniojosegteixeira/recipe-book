@@ -8,7 +8,19 @@ const handler = nc();
 handler.get(async (req, res) => {
   try {
     const query = req.query;
-    res.send(query);
+    const url = `${BASE_URL}/complexSearch`;
+    const options = {
+      params: {
+        ...query,
+        apiKey: process.env.API_KEY,
+      },
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const { data } = await axios.get(url, options);
+    return res.send(data);
   } catch (err) {
     console.log(err);
   }
