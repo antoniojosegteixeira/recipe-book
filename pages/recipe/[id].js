@@ -4,13 +4,13 @@ import { BASE_URL } from "../../utils/config";
 import axios from "axios";
 import { recipe } from "../../utils/mock";
 import Image from "next/image";
+import FavoriteButton from "../../components/FavoriteButton";
 
 const Recipe = ({ data }) => {
-  console.log(data);
   return (
     <Container>
       <Typography component="h1" variant="h2" align="center">
-        {data?.title}
+        {data.title}
       </Typography>
       <Grid container justifyContent="center">
         <Grid item xs={12} md={5}>
@@ -24,6 +24,9 @@ const Recipe = ({ data }) => {
         </Grid>
       </Grid>
       <List>
+        <ListItem>
+          <FavoriteButton id={data.id} title={data.title} />
+        </ListItem>
         <ListItem>
           <Typography component="h4" variant="h4">
             Ingredients

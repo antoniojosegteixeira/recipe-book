@@ -1,20 +1,12 @@
 import React from "react";
 import { List, ListItem, Typography, TextField } from "@mui/material";
+import Cookies from "js-cookie";
 
 const Favorites = () => {
   let favoriteArray = [];
   if (typeof window !== "undefined") {
-    favoriteArray = JSON.parse(localStorage.getItem("favorites"));
+    favoriteArray = JSON.parse(Cookies.get("favorites"));
   }
-
-  /*
-  const items = [
-    { id: "213432", title: "Sugar Cookies" },
-    { id: "213421", title: "Chocolate Cookies" },
-  ];
-
-  localStorage.setItem("favorites", JSON.stringify(items));
-  */
 
   return (
     <List>
