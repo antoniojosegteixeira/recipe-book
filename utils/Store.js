@@ -22,8 +22,12 @@ const reducer = (state, action) => {
       }
 
     case "REMOVE_FAVORITE":
-      return { ...state };
-
+      const remFav = action.payload;
+      const filteredFavorites = state.favorites.filter(
+        (item) => item.id !== remFav.id
+      );
+      Cookies.set("favorites", JSON.stringify(filteredFavorites));
+      return { ...state, favorites: filteredFavorites };
     case "CLEAR_FAVORITES":
       return { ...state };
 

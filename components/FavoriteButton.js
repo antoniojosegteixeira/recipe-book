@@ -6,12 +6,31 @@ import Cookies from "js-cookie";
 export default function FavoriteButton({ id, title }) {
   const { state, dispatch } = useContext(Store);
   const { favorites } = state;
-  console.log(favorites, Cookies.get());
+
+  const isAdded = favorites.filter((item) => item.id === id.toString());
 
   const handleAddClick = (e) => {
     e.preventDefault();
     dispatch({ type: "ADD_FAVORITE", payload: { id: id.toString(), title } });
   };
 
-  return <Button onClick={handleAddClick}>Add to favorites</Button>;
+  const handleRemoveClick = (e) => {
+    e.preventDefault();
+    dispatch({
+      type: "REMOVE_FAVORITE",
+      payload: { id: id.toString(), title },
+    });
+  };
+
+  console.log("favorites now", favorites);
+
+  return (
+    <>
+      {isAdded.length > 0 ? (
+        <Button onClick={handleRemoveClick}>Remove from favorites</Button>
+      ) : (
+        <Button onClick={handleAddClick}>Add to favorites</Button>
+      )}
+    </>
+  );
 }
