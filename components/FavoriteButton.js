@@ -1,13 +1,19 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Button } from "@mui/material";
 import { Store } from "../utils/Store";
-import Cookies from "js-cookie";
 
 export default function FavoriteButton({ id, title }) {
   const { state, dispatch } = useContext(Store);
   const { favorites } = state;
+  const [isAdded, setIsAdded] = useState(false);
 
-  const isAdded = favorites.filter((item) => item.id === id.toString());
+  useEffect(() => {
+    const favBool =
+      favorites.filter((item) => item.id === id.toString()).length > 0
+        ? true
+        : false;
+    setIsAdded(favBool);
+  }, [favorites, id]);
 
   const handleAddClick = (e) => {
     e.preventDefault();
@@ -22,11 +28,9 @@ export default function FavoriteButton({ id, title }) {
     });
   };
 
-  console.log("favorites now", favorites);
-
   return (
     <>
-      {isAdded.length > 0 ? (
+      {isAdded ? (
         <Button onClick={handleRemoveClick}>Remove from favorites</Button>
       ) : (
         <Button onClick={handleAddClick}>Add to favorites</Button>
