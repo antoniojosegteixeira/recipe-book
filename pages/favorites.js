@@ -1,12 +1,11 @@
-import React from "react";
-import { List, ListItem, Typography, TextField } from "@mui/material";
-import Cookies from "js-cookie";
+import React, { useContext } from "react";
+import { List, ListItem, Typography, TextField, Link } from "@mui/material";
+import NextLink from "next/link";
+import { Store } from "../utils/Store";
 
 const Favorites = () => {
-  let favoriteArray = [];
-  if (typeof window !== "undefined") {
-    favoriteArray = JSON.parse(Cookies.get("favorites"));
-  }
+  const { state } = useContext(Store);
+  const { favorites } = state;
 
   return (
     <List>
@@ -14,13 +13,12 @@ const Favorites = () => {
         <Typography>MY FAVORITES</Typography>
       </ListItem>
       <ListItem>
-        {favoriteArray.length > 0 &&
-          favoriteArray.map((item) => {
+        {favorites.length > 0 &&
+          favorites.map((item) => {
             return (
-              <List key={item.id}>
-                <ListItem>{item.title}</ListItem>
-                <ListItem>{item.id}</ListItem>
-              </List>
+              <NextLink key={item.id} href={`/recipe/${item.id}`} passHref>
+                <Link>{item.title}</Link>
+              </NextLink>
             );
           })}
       </ListItem>

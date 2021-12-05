@@ -5,7 +5,7 @@ import { Store } from "../utils/Store";
 export default function FavoriteButton({ id, title }) {
   const { state, dispatch } = useContext(Store);
   const { favorites } = state;
-  const [isAdded, setIsAdded] = useState(false);
+  const [isAdded, setIsAdded] = useState(null);
 
   useEffect(() => {
     const favBool =
@@ -32,7 +32,7 @@ export default function FavoriteButton({ id, title }) {
     <>
       {isAdded ? (
         <Button onClick={handleRemoveClick}>Remove from favorites</Button>
-      ) : (
+      ) : isAdded === null ? null : (
         <Button onClick={handleAddClick}>Add to favorites</Button>
       )}
     </>
