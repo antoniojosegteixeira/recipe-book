@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { List, ListItem, Typography, TextField, Button } from "@mui/material";
 import { useRouter } from "next/router";
+import Layout from "../components/Layout";
 
 const Index = () => {
   const [search, setSearch] = useState("egg");
@@ -17,24 +18,26 @@ const Index = () => {
   };
 
   return (
-    <List>
-      <ListItem>
-        <Typography>Hello world</Typography>
-      </ListItem>
-      <ListItem>
-        <form onSubmit={submitHandler}>
-          <TextField
-            variant="outlined"
-            fullWidth
-            id="search"
-            label="Search for recipes"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
-          <Button type="submit">Search</Button>
-        </form>
-      </ListItem>
-    </List>
+    <Layout>
+      <List>
+        <ListItem>
+          <Typography>Hello world</Typography>
+        </ListItem>
+        <ListItem>
+          <form onSubmit={submitHandler}>
+            <TextField
+              variant="outlined"
+              fullWidth
+              id="search"
+              label="Search for recipes"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <Button type="submit">Search</Button>
+          </form>
+        </ListItem>
+      </List>
+    </Layout>
   );
 };
 
