@@ -13,8 +13,13 @@ const reducer = (state, action) => {
   switch (action.type) {
     case "ADD_FAVORITE":
       const newFav = action.payload;
-      Cookies.set("favorites", JSON.stringify([...state.favorites, newFav]));
-      return { ...state, favorites: [...state.favorites, newFav] };
+      const isAdded = state.favorites.filter((item) => item.id == newFav.id);
+      if (isAdded.length >= 1) {
+        return state;
+      } else {
+        Cookies.set("favorites", JSON.stringify([...state.favorites, newFav]));
+        return { ...state, favorites: [...state.favorites, newFav] };
+      }
 
     case "REMOVE_FAVORITE":
       return { ...state };
