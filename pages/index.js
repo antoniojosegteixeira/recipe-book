@@ -7,6 +7,7 @@ import {
   Button,
   Grid,
   Container,
+  Box,
 } from "@mui/material";
 import { useRouter } from "next/router";
 import Layout from "../components/Layout";
@@ -28,52 +29,42 @@ const Index = () => {
     }
   };
   //fontFamily: "Handy Quomte",
+
   return (
     <Layout>
-      <Container>
-        <Grid
-          container
-          columnSpacing={5}
-          sx={{ mt: 2, alignItems: "center", justifyContent: "center" }}
+      <Box
+        sx={{
+          bgcolor: "background.paper",
+          backgroundImage: `url(/images/headerimage.jpg)`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <Container
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
         >
-          <Grid
-            item
-            xs={12}
-            md={6}
+          <Typography
+            component="h1"
+            variant="h3"
+            align="center"
             sx={{
-              display: "flex",
-              justifyContent: { xs: "center", md: "right" },
+              fontFamily: "Lora",
+              fontWeight: "bold",
             }}
           >
-            <Image
-              src="/images/headerImg.png"
-              alt="Recipe Book"
-              width={450}
-              height={300}
-            />
-          </Grid>
-          <Grid
-            item
-            xs={12}
-            md={6}
-            sx={{
-              display: "flex",
-              justifyContent: { xs: "center", md: "left" },
-              textAlign: { xs: "center", md: "left" },
-            }}
-          >
-            <Typography
-              component="h1"
-              variant="h1"
-              sx={{
-                fontFamily: "Handy Quomte",
-                color: "#365863",
-              }}
-            >
-              {`Let's Cook`} <br /> {`Something`}
-            </Typography>
-          </Grid>
-        </Grid>
+            What are we going to cook today?
+          </Typography>
+        </Container>
+      </Box>
+      <Container sx={{ bgcolor: "white", borderRadius: 4, minHeight: "80vh" }}>
+        <Grid></Grid>
       </Container>
     </Layout>
   );

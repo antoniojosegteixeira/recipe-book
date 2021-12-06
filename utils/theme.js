@@ -10,6 +10,14 @@ const theme = responsiveFontSizes(
       secondary: {
         main: green[500],
       },
+      background: {
+        paper: "#d9d9d9",
+      },
+    },
+    typography: {
+      h3: {
+        color: "#212529",
+      },
     },
   })
 );
