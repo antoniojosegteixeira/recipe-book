@@ -1,15 +1,17 @@
-import { createTheme } from "@mui/material/styles";
+import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 import { green, purple } from "@mui/material/colors";
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: purple[500],
+const theme = responsiveFontSizes(
+  createTheme({
+    palette: {
+      primary: {
+        main: "#c2d1cf",
+      },
+      secondary: {
+        main: green[500],
+      },
     },
-    secondary: {
-      main: green[500],
-    },
-  },
-});
+  })
+);
 
 export default theme;
