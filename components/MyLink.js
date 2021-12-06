@@ -12,6 +12,10 @@ const defaultSx = {
   },
 };
 
-export default function MyLink({ children, sx }) {
-  return <Link sx={{ ...defaultSx, ...sx }}>{children}</Link>;
+export default function MyLink({ children, sx, href }) {
+  return (
+    <Link sx={{ ...defaultSx, ...sx }} href={href}>
+      {children}
+    </Link>
+  );
 }

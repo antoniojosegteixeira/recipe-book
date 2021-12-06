@@ -78,19 +78,29 @@ export default function Layout({ children, title, sx }) {
         >
           <Container sx={{ py: 3 }}>
             <Grid container>
-              <Grid item md={6}>
-                <List>
-                  <ListItem>
+              <Grid item md={6} xs={12}>
+                <List p={0}>
+                  <ListItem
+                    sx={{
+                      width: "100%",
+                    }}
+                  >
                     <Typography
                       component="span"
                       variant="h1"
-                      sx={{ lineHeight: 0.6 }}
+                      width="100%"
+                      sx={{
+                        lineHeight: 0.8,
+                        textAlign: { xs: "center", md: "start" },
+                      }}
                     >
                       Recipe Book
                     </Typography>
                   </ListItem>
                   <ListItem
                     sx={{
+                      display: "flex",
+                      justifyContent: { xs: "center", md: "start" },
                       "& a": {
                         fontSize: "2rem",
                         pr: 2,
@@ -117,7 +127,17 @@ export default function Layout({ children, title, sx }) {
                   </ListItem>
                 </List>
               </Grid>
-              <Grid item container md={3} sx={{ border: "1px solid black" }}>
+
+              <Grid
+                item
+                container
+                sm={6}
+                md={3}
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
                 <Typography
                   component="h3"
                   variant="h3"
@@ -130,45 +150,99 @@ export default function Layout({ children, title, sx }) {
                   container
                   xs={12}
                   sx={{
+                    maxWidth: 300,
                     "& a": {
-                      lineHeight: 0.6,
+                      lineHeight: 0.85,
                     },
                   }}
                 >
                   <Grid item xs={6}>
-                    {tags.map((tag, i) => {
-                      if (i >= 7) return;
-                      return (
-                        <ListItem key={tag}>
-                          <NextLink href={`/search?type=${tag}`} passHref>
-                            <MyLink sx={{ textTransform: "capitalize" }}>
-                              {tag}
-                            </MyLink>
-                          </NextLink>
-                        </ListItem>
-                      );
-                    })}
+                    <List>
+                      {tags.map((tag, i) => {
+                        if (i >= 7) return;
+                        return (
+                          <ListItem key={tag}>
+                            <NextLink href={`/search?type=${tag}`} passHref>
+                              <MyLink sx={{ textTransform: "capitalize" }}>
+                                {tag}
+                              </MyLink>
+                            </NextLink>
+                          </ListItem>
+                        );
+                      })}
+                    </List>
                   </Grid>
                   <Grid item xs={6}>
-                    {tags.map((tag, i) => {
-                      if (i <= 7) return;
-                      return (
-                        <ListItem key={tag}>
-                          <NextLink href={`/search?type=${tag}`} passHref>
-                            <MyLink sx={{ textTransform: "capitalize" }}>
-                              {tag}
-                            </MyLink>
-                          </NextLink>
-                        </ListItem>
-                      );
-                    })}
-                    <ListItem>
-                      <NextLink href={`/search`} passHref>
-                        <MyLink>...more</MyLink>
-                      </NextLink>
-                    </ListItem>
+                    <List>
+                      {tags.map((tag, i) => {
+                        if (i <= 7) return;
+                        return (
+                          <ListItem key={tag}>
+                            <NextLink href={`/search?type=${tag}`} passHref>
+                              <MyLink sx={{ textTransform: "capitalize" }}>
+                                {tag}
+                              </MyLink>
+                            </NextLink>
+                          </ListItem>
+                        );
+                      })}
+                      <ListItem>
+                        <NextLink href={`/search`} passHref>
+                          <MyLink>...more</MyLink>
+                        </NextLink>
+                      </ListItem>
+                    </List>
                   </Grid>
                 </Grid>
+              </Grid>
+              <Grid
+                item
+                container
+                xs={12}
+                sm={6}
+                md={3}
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                <Typography
+                  component="h3"
+                  variant="h3"
+                  width="100%"
+                  align="center"
+                >
+                  Links
+                </Typography>
+                <List
+                  sx={{
+                    lineHeight: 0.6,
+                    py: 0,
+                    height: "100%",
+                  }}
+                >
+                  <ListItem>
+                    <NextLink href={"/"} passHref>
+                      <MyLink sx={{ textTransform: "capitalize" }}>
+                        Homepage
+                      </MyLink>
+                    </NextLink>
+                  </ListItem>
+                  <ListItem>
+                    <NextLink href={"/search"} passHref>
+                      <MyLink sx={{ textTransform: "capitalize" }}>
+                        Search
+                      </MyLink>
+                    </NextLink>
+                  </ListItem>
+                  <ListItem>
+                    <NextLink href={"/favorites"} passHref>
+                      <MyLink sx={{ textTransform: "capitalize" }}>
+                        Favorites
+                      </MyLink>
+                    </NextLink>
+                  </ListItem>
+                </List>
               </Grid>
             </Grid>
           </Container>
