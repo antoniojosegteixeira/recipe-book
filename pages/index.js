@@ -8,12 +8,15 @@ import {
   Grid,
   Container,
   Box,
+  Link,
 } from "@mui/material";
+import NextLink from "next/link";
 import { useRouter } from "next/router";
 import Layout from "../components/Layout";
 import Image from "next/image";
 import { alpha } from "@mui/material/styles";
-import { teal } from "@mui/material/colors";
+import { grey } from "@mui/material/colors";
+import PopularCard from "../components/PopularCard";
 
 const Index = () => {
   const [search, setSearch] = useState("egg");
@@ -28,7 +31,6 @@ const Index = () => {
       });
     }
   };
-  //fontFamily: "Handy Quomte",
 
   return (
     <Layout>
@@ -41,30 +43,53 @@ const Index = () => {
           minHeight: "100vh",
           display: "flex",
           justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
         }}
       >
-        <Container
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
+        <Box sx={{ maxWidth: "700px", m: 2 }}>
           <Typography
             component="h1"
-            variant="h3"
             align="center"
             sx={{
               fontFamily: "Lora",
               fontWeight: "bold",
+              fontSize: "calc(1.25rem + 1.5vw)",
+              mb: 2,
             }}
           >
             What are we going to cook today?
           </Typography>
-        </Container>
+          <form onSubmit={submitHandler}>
+            <TextField
+              variant="outlined"
+              fullWidth
+              id="search"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              sx={{ bgcolor: "white" }}
+            />
+            <Button type="submit">Search</Button>
+          </form>
+        </Box>
       </Box>
-      <Container sx={{ bgcolor: "white", borderRadius: 4, minHeight: "80vh" }}>
-        <Grid></Grid>
+      <Container
+        sx={{
+          bgcolor: "white",
+          borderRadius: 4,
+          minHeight: "80vh",
+          py: 6,
+        }}
+      >
+        <Typography
+          component="h2"
+          variant="h2"
+          align="center"
+          sx={{ fontFamily: "Handy Quomte" }}
+        >
+          Popular Recipes
+        </Typography>
+        <PopularCard />
       </Container>
     </Layout>
   );

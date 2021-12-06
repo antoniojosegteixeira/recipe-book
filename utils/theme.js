@@ -18,6 +18,9 @@ const theme = responsiveFontSizes(
       h3: {
         color: "#212529",
       },
+      h4: {
+        color: "#212529",
+      },
     },
   })
 );
