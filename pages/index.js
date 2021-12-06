@@ -75,19 +75,17 @@ const Index = () => {
         </Box>
       </Box>
       <Container
+        maxWidth={false}
         sx={{
           bgcolor: "white",
           borderRadius: 4,
           minHeight: "80vh",
           py: 6,
+          px: 5,
+          maxWidth: "1100px",
         }}
       >
-        <Typography
-          component="h2"
-          variant="h2"
-          align="center"
-          sx={{ fontFamily: "Handy Quomte" }}
-        >
+        <Typography component="h2" variant="h2" align="center">
           Popular Recipes
         </Typography>
         <PopularCard />

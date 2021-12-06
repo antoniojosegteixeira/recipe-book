@@ -18,7 +18,13 @@ const categories = [
 
 export default function CategoriesButton() {
   return (
-    <>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+      }}
+    >
       <Typography
         component="h2"
         variant="h2"
@@ -27,7 +33,7 @@ export default function CategoriesButton() {
       >
         Categories
       </Typography>
-      <Grid container spacing={2}>
+      <Grid container columnSpacing={-2}>
         {categories.map((item) => {
           return (
             <Grid item key={item.type} md={2}>
@@ -104,6 +110,6 @@ export default function CategoriesButton() {
           </NextLink>
         </Grid>
       </Grid>
-    </>
+    </Box>
   );
 }

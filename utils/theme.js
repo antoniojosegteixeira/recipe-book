@@ -15,6 +15,10 @@ const theme = responsiveFontSizes(
       },
     },
     typography: {
+      h2: {
+        color: "#212529",
+        fontFamily: "Handy Quomte",
+      },
       h3: {
         color: "#212529",
       },
