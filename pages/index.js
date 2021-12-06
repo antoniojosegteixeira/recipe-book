@@ -17,6 +17,7 @@ import Image from "next/image";
 import { alpha } from "@mui/material/styles";
 import { grey } from "@mui/material/colors";
 import PopularCard from "../components/PopularCard";
+import CategoriesButtons from "../components/CategoriesButtons";
 
 const Index = () => {
   const [search, setSearch] = useState("egg");
@@ -90,6 +91,7 @@ const Index = () => {
           Popular Recipes
         </Typography>
         <PopularCard />
+        <CategoriesButtons />
       </Container>
     </Layout>
   );

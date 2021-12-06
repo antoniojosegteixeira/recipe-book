@@ -5,7 +5,7 @@ const theme = responsiveFontSizes(
   createTheme({
     palette: {
       primary: {
-        main: "#c2d1cf",
+        main: "#43888f",
       },
       secondary: {
         main: green[500],
@@ -20,6 +20,11 @@ const theme = responsiveFontSizes(
       },
       h4: {
         color: "#212529",
+      },
+      h5: {
+        color: "#212529",
+        fontFamily: "Lora",
+        fontWeight: "bold",
       },
     },
   })
