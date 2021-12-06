@@ -6,28 +6,41 @@ const theme = responsiveFontSizes(
     palette: {
       primary: {
         main: "#43888f",
+        dark: "#212529",
       },
       secondary: {
-        main: green[500],
+        main: "#fff",
       },
       background: {
         paper: "#d9d9d9",
       },
     },
     typography: {
+      h1: {
+        color: "primary.dark",
+        fontFamily: "Your Dream",
+        fontSize: 105,
+      },
       h2: {
-        color: "#212529",
+        color: "primary.dark",
         fontFamily: "Your Dream",
         fontSize: 85,
       },
       h3: {
-        color: "#212529",
+        color: "primary.dark",
+        fontFamily: "Your Dream",
+        fontSize: 70,
       },
       h4: {
-        color: "#212529",
+        color: "primary.dark",
       },
       h5: {
-        color: "#212529",
+        color: "primary.dark",
+        fontFamily: "Lora",
+        fontWeight: "bold",
+      },
+      body2: {
+        color: "primary.dark",
         fontFamily: "Lora",
         fontWeight: "bold",
       },

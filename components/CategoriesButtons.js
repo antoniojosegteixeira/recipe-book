@@ -50,6 +50,7 @@ export default function CategoriesButton() {
                 <Link
                   sx={{
                     textDecoration: "none",
+                    color: "primary.dark",
                     "& img": {
                       borderRadius: "50%",
                     },
@@ -80,55 +81,52 @@ export default function CategoriesButton() {
             </Grid>
           );
         })}
-        <Grid item xs={5} sm={4} md={2}>
+        <Grid
+          item
+          xs={6}
+          sm={3}
+          md={2}
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            maxWidth: "160px",
+          }}
+          spacing={2}
+        >
           <NextLink href={`/search`} passHref>
             <Link
               sx={{
                 textDecoration: "none",
+                "& img": {
+                  borderRadius: "50%",
+                },
+
                 "&:hover": {
                   "& .MuiBox-root": {
                     transform: "scale(1.08)",
                   },
-                  "& .MuiTypography-h5": {
+                  "& h5": {
                     color: "primary.main",
                   },
                 },
               }}
             >
-              <List>
-                <ListItem
-                  sx={{
-                    width: "150px",
-                    height: "150px",
-                    p: 1,
-                  }}
-                >
-                  <Box
-                    sx={{
-                      backgroundImage: `url(/images/categories/more.jpg})`,
-                      backgroundSize: "cover",
-                      borderRadius: "50%",
-                      width: "100%",
-                      height: "100%",
-                      transition: "all 0.4s ease-in-out",
-                    }}
-                  ></Box>
-                </ListItem>
-                <ListItem>
-                  <Typography
-                    component="h5"
-                    variant="h5"
-                    align="center"
-                    width="100%"
-                    sx={{
-                      textTransform: "capitalize",
-                      color: "#212529",
-                    }}
-                  >
-                    More
-                  </Typography>
-                </ListItem>
-              </List>
+              <Box sx={{ transition: "all 0.4s ease-in-out", mb: 1 }}>
+                <Image
+                  src="/images/categories/more.jpg"
+                  width="150px"
+                  height="150px"
+                  alt=""
+                />
+              </Box>
+              <Typography
+                component="h5"
+                variant="h5"
+                align="center"
+                sx={{ textTransform: "capitalize" }}
+              >
+                More
+              </Typography>
             </Link>
           </NextLink>
         </Grid>
