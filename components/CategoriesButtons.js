@@ -1,6 +1,7 @@
 import React from "react";
 import { Grid, Box, Typography, Link, List, ListItem } from "@mui/material";
 import NextLink from "next/link";
+import Image from "next/image";
 
 const categories = [
   { type: "dessert", img: "/images/categories/cookies.jpg" },
@@ -18,93 +19,115 @@ const categories = [
 
 export default function CategoriesButton() {
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-      }}
-    >
-      <Typography
-        component="h2"
-        variant="h2"
-        align="center"
-        sx={{ fontFamily: "Handy Quomte", pt: 6 }}
-      >
+    <Box>
+      <Typography component="h2" variant="h2" align="center">
         Categories
       </Typography>
-      <Grid container columnSpacing={-2}>
+      <Grid
+        container
+        spacing={2}
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
         {categories.map((item) => {
           return (
-            <Grid item key={item.type} md={2}>
+            <Grid
+              item
+              key={item.type}
+              xs={6}
+              sm={3}
+              md={2}
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                maxWidth: "160px",
+              }}
+              spacing={2}
+            >
               <NextLink href={`/search?type=${item.type}`} passHref>
                 <Link
                   sx={{
                     textDecoration: "none",
+                    "& img": {
+                      borderRadius: "50%",
+                    },
+
                     "&:hover": {
                       "& .MuiBox-root": {
                         transform: "scale(1.08)",
                       },
-                      "& .MuiTypography-h5": {
+                      "& h5": {
                         color: "primary.main",
                       },
                     },
                   }}
                 >
-                  <List>
-                    <ListItem>
-                      <Box
-                        sx={{
-                          backgroundImage: `url(${item.img})`,
-                          backgroundSize: "cover",
-                          borderRadius: "50%",
-                          width: 150,
-                          height: 150,
-                          transition: "all 0.4s ease-in-out",
-                          mb: "5px",
-                        }}
-                      ></Box>
-                    </ListItem>
-                    <Typography
-                      component="h5"
-                      variant="h5"
-                      align="center"
-                      sx={{
-                        textTransform: "capitalize",
-                        color: "#212529",
-                      }}
-                    >
-                      {item.type}
-                    </Typography>
-                  </List>
+                  <Box sx={{ transition: "all 0.4s ease-in-out", mb: 1 }}>
+                    <Image src={item.img} width="150px" height="150px" alt="" />
+                  </Box>
+                  <Typography
+                    component="h5"
+                    variant="h5"
+                    align="center"
+                    sx={{ textTransform: "capitalize" }}
+                  >
+                    {item.type}
+                  </Typography>
                 </Link>
               </NextLink>
             </Grid>
           );
         })}
-        <Grid item md={2}>
+        <Grid item xs={5} sm={4} md={2}>
           <NextLink href={`/search`} passHref>
-            <Link>
+            <Link
+              sx={{
+                textDecoration: "none",
+                "&:hover": {
+                  "& .MuiBox-root": {
+                    transform: "scale(1.08)",
+                  },
+                  "& .MuiTypography-h5": {
+                    color: "primary.main",
+                  },
+                },
+              }}
+            >
               <List>
-                <ListItem>
+                <ListItem
+                  sx={{
+                    width: "150px",
+                    height: "150px",
+                    p: 1,
+                  }}
+                >
                   <Box
                     sx={{
-                      backgroundImage: `url(/images/categories/more.jpg)`,
+                      backgroundImage: `url(/images/categories/more.jpg})`,
                       backgroundSize: "cover",
                       borderRadius: "50%",
-                      width: 150,
-                      height: 150,
+                      width: "100%",
+                      height: "100%",
+                      transition: "all 0.4s ease-in-out",
                     }}
                   ></Box>
                 </ListItem>
-                <Typography
-                  component="h5"
-                  variant="h5"
-                  align="center"
-                  sx={{ textTransform: "capitalize" }}
-                >
-                  More
-                </Typography>
+                <ListItem>
+                  <Typography
+                    component="h5"
+                    variant="h5"
+                    align="center"
+                    width="100%"
+                    sx={{
+                      textTransform: "capitalize",
+                      color: "#212529",
+                    }}
+                  >
+                    More
+                  </Typography>
+                </ListItem>
               </List>
             </Link>
           </NextLink>

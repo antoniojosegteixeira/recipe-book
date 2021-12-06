@@ -17,7 +17,8 @@ const theme = responsiveFontSizes(
     typography: {
       h2: {
         color: "#212529",
-        fontFamily: "Handy Quomte",
+        fontFamily: "Your Dream",
+        fontSize: 85,
       },
       h3: {
         color: "#212529",

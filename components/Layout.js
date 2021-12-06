@@ -1,7 +1,16 @@
 /* eslint-disable @next/next/no-page-custom-font */
 import React from "react";
 import Head from "next/head";
-import { ThemeProvider, Container, Box, CssBaseline } from "@mui/material";
+import {
+  ThemeProvider,
+  Container,
+  Box,
+  CssBaseline,
+  Grid,
+  Typography,
+  List,
+  ListItem,
+} from "@mui/material";
 import theme from "../utils/theme";
 
 export default function Layout({ children, title, sx }) {
@@ -18,6 +27,10 @@ export default function Layout({ children, title, sx }) {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Lora&display=swap"
           />
+          <link
+            href="http://fonts.cdnfonts.com/css/your-dream"
+            rel="stylesheet"
+          />
 
           <title>
             {title
@@ -27,6 +40,21 @@ export default function Layout({ children, title, sx }) {
           <meta name="viewport" content="initial-scale=1, width=device-width" />
         </Head>
         <Box sx={{ minHeight: "100vh", ...sx }}>{children}</Box>
+        <Box as="footer" sx={{ minHeight: "400px", bgcolor: "#ecd0d3" }}>
+          <Container>
+            <Grid container>
+              <Grid item md={6}>
+                <List>
+                  <ListItem>
+                    <Typography component="span" variant="h2">
+                      Recipe Book
+                    </Typography>
+                  </ListItem>
+                </List>
+              </Grid>
+            </Grid>
+          </Container>
+        </Box>
       </ThemeProvider>
     </>
   );
