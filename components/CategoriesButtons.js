@@ -26,6 +26,7 @@ export default function CategoriesButton() {
       <Grid
         container
         spacing={2}
+        item
         sx={{
           display: "flex",
           justifyContent: "center",
@@ -34,6 +35,7 @@ export default function CategoriesButton() {
         {categories.map((item) => {
           return (
             <Grid
+              container
               item
               key={item.type}
               xs={6}
@@ -44,7 +46,6 @@ export default function CategoriesButton() {
                 justifyContent: "center",
                 maxWidth: "160px",
               }}
-              spacing={2}
             >
               <NextLink href={`/search?type=${item.type}`} passHref>
                 <Link
@@ -91,7 +92,6 @@ export default function CategoriesButton() {
             justifyContent: "center",
             maxWidth: "160px",
           }}
-          spacing={2}
         >
           <NextLink href={`/search`} passHref>
             <Link

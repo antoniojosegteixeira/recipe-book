@@ -12,6 +12,7 @@ import {
   Container,
   Link,
 } from "@mui/material";
+import Layout from "../components/Layout";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { BASE_URL } from "../utils/config";
@@ -21,38 +22,54 @@ const SearchPage = ({ data }) => {
   const router = useRouter();
 
   return (
-    <Container>
-      <Typography>Search Results</Typography>
-      <Grid container spacing={3} justifyContent="center">
-        {data?.results.map((recipe) => {
-          return (
-            <Grid item key={recipe.id}>
-              <NextLink href={`/recipe/${recipe.id}`} passHref>
-                <Link sx={{ textDecoration: "none" }}>
-                  <Card sx={{ maxWidth: 280 }}>
-                    <CardMedia
-                      component="img"
-                      height="230"
-                      image={recipe.image}
-                      alt="green iguana"
-                    />
-                    <CardContent>
-                      <Typography gutterBottom variant="h5" component="div">
-                        {recipe.title}
-                      </Typography>
-                    </CardContent>
-                    <CardActions>
-                      <Button size="small">Share</Button>
-                      <Button size="small">Add to Favorites</Button>
-                    </CardActions>
-                  </Card>
-                </Link>
-              </NextLink>
-            </Grid>
-          );
-        })}
-      </Grid>
-    </Container>
+    <Layout>
+      <Container>
+        <Typography>Search Results</Typography>
+        <Grid container spacing={3} justifyContent="center">
+          {data?.results.map((recipe) => {
+            return (
+              <Grid item key={recipe.id}>
+                <NextLink href={`/recipe/${recipe.id}`} passHref>
+                  <Link sx={{ textDecoration: "none" }}>
+                    <Card
+                      sx={{
+                        maxWidth: 220,
+                        height: "100%",
+                        bgcolor: "white",
+                        boxShadow: "0 0 10px gray",
+                      }}
+                    >
+                      <CardMedia
+                        component="img"
+                        height="230"
+                        image={recipe.image}
+                        alt={recipe.title}
+                      />
+                      <CardContent
+                        sx={{
+                          "&:last-child": {
+                            pb: 1,
+                          },
+                        }}
+                      >
+                        <Typography
+                          gutterBottom
+                          variant="h6"
+                          component="div"
+                          align="center"
+                        >
+                          {recipe.title}
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                </NextLink>
+              </Grid>
+            );
+          })}
+        </Grid>
+      </Container>
+    </Layout>
   );
 };
 

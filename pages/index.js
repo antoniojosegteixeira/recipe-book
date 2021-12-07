@@ -95,18 +95,4 @@ const Index = () => {
   );
 };
 
-/*
-<form onSubmit={submitHandler}>
-            <TextField
-              variant="outlined"
-              fullWidth
-              id="search"
-              label="Search for recipes"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-            <Button type="submit">Search</Button>
-          </form>
-*/
-
 export default Index;

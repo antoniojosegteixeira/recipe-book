@@ -148,6 +148,7 @@ export default function Layout({ children, title, sx }) {
                 </Typography>
                 <Grid
                   container
+                  item
                   xs={12}
                   sx={{
                     maxWidth: 300,

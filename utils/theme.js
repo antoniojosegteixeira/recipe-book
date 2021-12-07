@@ -33,11 +33,19 @@ const theme = responsiveFontSizes(
       },
       h4: {
         color: "primary.dark",
+        fontFamily: "Lora",
+        fontWeight: "bold",
       },
       h5: {
         color: "primary.dark",
         fontFamily: "Lora",
         fontWeight: "bold",
+      },
+      h6: {
+        color: "primary.dark",
+        fontFamily: "Lora",
+        fontWeight: "bold",
+        fontSize: 17,
       },
       body2: {
         color: "primary.dark",
