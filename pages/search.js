@@ -1,4 +1,8 @@
 import React from "react";
+import { useRouter } from "next/router";
+import axios from "axios";
+import { BASE_URL } from "../utils/config";
+import NextLink from "next/link";
 import {
   List,
   ListItem,
@@ -15,10 +19,7 @@ import {
   Box,
 } from "@mui/material";
 import Layout from "../components/Layout";
-import { useRouter } from "next/router";
-import axios from "axios";
-import { BASE_URL } from "../utils/config";
-import NextLink from "next/link";
+import TopBar from "../components/TopBar";
 import { search } from "../utils/mock";
 
 const SearchPage = ({ data, page }) => {
@@ -36,6 +37,7 @@ const SearchPage = ({ data, page }) => {
 
   return (
     <Layout>
+      <TopBar />
       <Container sx={{ py: 4 }}>
         <Typography>Search Results</Typography>
         <Grid container spacing={3} justifyContent="center">
@@ -114,7 +116,8 @@ export async function getServerSideProps(context) {
   const options = {
     params: {
       ...query,
-      offset: page * 10,
+      offset: page * 12,
+      number: 12,
       apiKey: process.env.API_KEY,
     },
     headers: {
@@ -123,7 +126,6 @@ export async function getServerSideProps(context) {
   };
 
   const { data } = await axios.get(url, options);
-
   */
 
   return {
