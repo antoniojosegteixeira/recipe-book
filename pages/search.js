@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
   List,
   ListItem,
@@ -11,19 +11,32 @@ import {
   Grid,
   Container,
   Link,
+  Pagination,
+  Box,
 } from "@mui/material";
 import Layout from "../components/Layout";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { BASE_URL } from "../utils/config";
 import NextLink from "next/link";
+import { search } from "../utils/mock";
 
-const SearchPage = ({ data }) => {
+const SearchPage = ({ data, page }) => {
   const router = useRouter();
+
+  const handlePagination = (e, value) => {
+    router.push({
+      pathname: "/search",
+      query: {
+        query: router.query.query,
+        page: value,
+      },
+    });
+  };
 
   return (
     <Layout>
-      <Container>
+      <Container sx={{ py: 4 }}>
         <Typography>Search Results</Typography>
         <Grid container spacing={3} justifyContent="center">
           {data?.results.map((recipe) => {
@@ -68,6 +81,23 @@ const SearchPage = ({ data }) => {
             );
           })}
         </Grid>
+        <Box
+          sx={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            pt: 3,
+          }}
+        >
+          <Pagination
+            count={Math.ceil(data.totalResults / data.number)}
+            margin="0 auto"
+            color="primary"
+            size="large"
+            page={Number(page)}
+            onChange={handlePagination}
+          />
+        </Box>
       </Container>
     </Layout>
   );
@@ -77,12 +107,14 @@ export default SearchPage;
 
 export async function getServerSideProps(context) {
   const { query } = context;
+  const page = query.page ? query.page : 1;
 
   /*
   const url = `${BASE_URL}/complexSearch`;
   const options = {
     params: {
       ...query,
+      offset: page * 10,
       apiKey: process.env.API_KEY,
     },
     headers: {
@@ -91,77 +123,13 @@ export async function getServerSideProps(context) {
   };
 
   const { data } = await axios.get(url, options);
+
   */
-  const data = {
-    results: [
-      {
-        id: 1096010,
-        title: "Egg Salad Wrap",
-        image: "https://spoonacular.com/recipeImages/1096010-312x231.jpg",
-        imageType: "jpg",
-      },
-      {
-        id: 642178,
-        title: "Egg and Dairy Free Pancakes",
-        image: "https://spoonacular.com/recipeImages/642178-312x231.jpg",
-        imageType: "jpg",
-      },
-      {
-        id: 642246,
-        title: "Egg-Free Chocolate Cupcakes",
-        image: "https://spoonacular.com/recipeImages/642246-312x231.jpg",
-        imageType: "jpg",
-      },
-      {
-        id: 642245,
-        title: "Egg-Free Cranberry Thumbprints",
-        image: "https://spoonacular.com/recipeImages/642245-312x231.jpg",
-        imageType: "jpg",
-      },
-      {
-        id: 642240,
-        title: "Egg Salad Sandwiches With Tarragon",
-        image: "https://spoonacular.com/recipeImages/642240-312x231.jpg",
-        imageType: "jpg",
-      },
-      {
-        id: 642230,
-        title: "Egg Souffle With Bacon and Asparagus",
-        image: "https://spoonacular.com/recipeImages/642230-312x231.jpg",
-        imageType: "jpg",
-      },
-      {
-        id: 662744,
-        title: "Taco Egg Roll",
-        image: "https://spoonacular.com/recipeImages/662744-312x231.jpg",
-        imageType: "jpg",
-      },
-      {
-        id: 645060,
-        title: "Good-Egg Salad Sandwich",
-        image: "https://spoonacular.com/recipeImages/645060-312x231.jpg",
-        imageType: "jpg",
-      },
-      {
-        id: 641700,
-        title: "Duck Egg Omelette With Caviar and Sour Cream",
-        image: "https://spoonacular.com/recipeImages/641700-312x231.jpg",
-        imageType: "jpg",
-      },
-      {
-        id: 633587,
-        title: "Baked Egg Linguine With Onion, Scallion, and Umame",
-        image: "https://spoonacular.com/recipeImages/633587-312x231.jpg",
-        imageType: "jpg",
-      },
-    ],
-    offset: 0,
-    number: 10,
-    totalResults: 1641,
-  };
+
   return {
     props: {
-      data,
+      data: search,
+      page,
     },
   };
 }
