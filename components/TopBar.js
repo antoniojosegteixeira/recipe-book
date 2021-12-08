@@ -109,22 +109,23 @@ export default function TopBar() {
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, position: "relative", minHeight: "60px" }}>
       <AppBar position="fixed" color="secondary">
         <Toolbar>
           <NextLink href="/" passHref>
             <Link sx={{ textDecoration: "none" }}>
               <Typography
                 noWrap
-                component="h4"
+                component="div"
                 color="primary.dark"
                 sx={{
                   display: { xs: "none", sm: "block" },
                   fontFamily: "Your Dream",
-                  fontSize: 35,
+                  fontSize: 50,
+                  lineHeight: 0.8,
                 }}
               >
-                RECIPE BOOK
+                Recipe Book
               </Typography>
             </Link>
           </NextLink>
@@ -134,7 +135,13 @@ export default function TopBar() {
           </Box>
 
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
+          <Box
+            sx={{
+              display: { xs: "none", md: "flex" },
+              minWidth: 140,
+              justifyContent: "right",
+            }}
+          >
             <NextLink href="/favorites" passHref>
               <IconButton size="large" color="inherit">
                 <StarIcon />
