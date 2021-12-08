@@ -110,21 +110,29 @@ export default function TopBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="fixed" color="secondary">
         <Toolbar>
           <NextLink href="/" passHref>
-            <Link color="secondary" sx={{ textDecoration: "none" }}>
+            <Link sx={{ textDecoration: "none" }}>
               <Typography
-                variant="h6"
                 noWrap
-                component="div"
-                sx={{ display: { xs: "none", sm: "block" } }}
+                component="h4"
+                color="primary.dark"
+                sx={{
+                  display: { xs: "none", sm: "block" },
+                  fontFamily: "Your Dream",
+                  fontSize: 35,
+                }}
               >
                 RECIPE BOOK
               </Typography>
             </Link>
           </NextLink>
-          <SearchBar />
+          <Box sx={{ flexGrow: 1 }} />
+          <Box sx={{ flexGrow: 2 }}>
+            <SearchBar />
+          </Box>
+
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             <NextLink href="/favorites" passHref>

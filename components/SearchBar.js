@@ -28,7 +28,7 @@ export default function SearchBar() {
         id="search"
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        sx={{ bgcolor: "white" }}
+        sx={{ bgcolor: "white", my: "2px" }}
       />
     </form>
   );
