@@ -7,6 +7,7 @@ const initialState = {
   favorites: Cookies.get("favorites")
     ? JSON.parse(Cookies.get("favorites"))
     : [],
+  search: {},
 };
 
 const reducer = (state, action) => {
@@ -30,6 +31,15 @@ const reducer = (state, action) => {
       return { ...state, favorites: filteredFavorites };
     case "CLEAR_FAVORITES":
       return { ...state };
+
+    case "ADD_SEARCH":
+      return {
+        ...state,
+        search: {
+          ...search,
+          ...action.payload,
+        },
+      };
 
     default:
       return state;

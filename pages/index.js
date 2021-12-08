@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   List,
   ListItem,
@@ -11,28 +11,14 @@ import {
   Link,
 } from "@mui/material";
 import NextLink from "next/link";
-import { useRouter } from "next/router";
 import Layout from "../components/Layout";
 import Image from "next/image";
 import { alpha } from "@mui/material/styles";
-import { grey } from "@mui/material/colors";
 import PopularCard from "../components/PopularCard";
 import CategoriesButtons from "../components/CategoriesButtons";
+import SearchBar from "../components/SearchBar";
 
 const Index = () => {
-  const [search, setSearch] = useState("egg");
-  const router = useRouter();
-
-  const submitHandler = (e) => {
-    e.preventDefault();
-    if (e !== "") {
-      router.push({
-        pathname: "/search",
-        query: { query: search },
-      });
-    }
-  };
-
   return (
     <Layout>
       <Box
@@ -61,17 +47,7 @@ const Index = () => {
           >
             What are we going to cook today?
           </Typography>
-          <form onSubmit={submitHandler}>
-            <TextField
-              variant="outlined"
-              fullWidth
-              id="search"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              sx={{ bgcolor: "white" }}
-            />
-            <Button type="submit">Search</Button>
-          </form>
+          <SearchBar />
         </Box>
       </Box>
       <Container
