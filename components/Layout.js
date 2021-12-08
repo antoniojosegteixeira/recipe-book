@@ -207,21 +207,25 @@ export default function Layout({ children, title, sx }) {
                   justifyContent: "center",
                 }}
               >
-                <Typography
-                  component="h3"
-                  variant="h3"
-                  width="100%"
-                  align="center"
-                >
-                  Links
-                </Typography>
                 <List
                   sx={{
-                    lineHeight: 0.6,
                     py: 0,
-                    height: "100%",
+                    textAlign: "top",
+                    "& a": {
+                      lineHeight: 0.85,
+                    },
                   }}
                 >
+                  <ListItem sx={{ mt: -1 }}>
+                    <Typography
+                      component="h3"
+                      variant="h3"
+                      width="100%"
+                      align="center"
+                    >
+                      Links
+                    </Typography>
+                  </ListItem>
                   <ListItem>
                     <NextLink href={"/"} passHref>
                       <MyLink sx={{ textTransform: "capitalize" }}>
