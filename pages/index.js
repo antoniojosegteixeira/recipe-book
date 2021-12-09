@@ -58,9 +58,9 @@ const Index = () => {
           bgcolor: "white",
           borderRadius: 4,
           minHeight: "80vh",
-          py: 6,
+          py: 3,
           px: 5,
-          maxWidth: "1100px",
+          maxWidth: "1000px",
         }}
       >
         <Typography component="h2" variant="h2" align="center">

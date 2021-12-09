@@ -19,7 +19,7 @@ const categories = [
 
 export default function CategoriesButton() {
   return (
-    <Box>
+    <Box sx={{ my: 4 }}>
       <Typography component="h2" variant="h2" align="center">
         Categories
       </Typography>
@@ -60,18 +60,18 @@ export default function CategoriesButton() {
                       "& .MuiBox-root": {
                         transform: "scale(1.08)",
                       },
-                      "& h5": {
+                      "& h6": {
                         color: "primary.main",
                       },
                     },
                   }}
                 >
                   <Box sx={{ transition: "all 0.4s ease-in-out", mb: 1 }}>
-                    <Image src={item.img} width="150px" height="150px" alt="" />
+                    <Image src={item.img} width="130px" height="130px" alt="" />
                   </Box>
                   <Typography
-                    component="h5"
-                    variant="h5"
+                    component="h6"
+                    variant="h6"
                     align="center"
                     sx={{ textTransform: "capitalize" }}
                   >
@@ -96,6 +96,7 @@ export default function CategoriesButton() {
           <NextLink href={`/search`} passHref>
             <Link
               sx={{
+                color: "primary.dark",
                 textDecoration: "none",
                 "& img": {
                   borderRadius: "50%",
@@ -105,7 +106,7 @@ export default function CategoriesButton() {
                   "& .MuiBox-root": {
                     transform: "scale(1.08)",
                   },
-                  "& h5": {
+                  "& h6": {
                     color: "primary.main",
                   },
                 },
@@ -114,14 +115,14 @@ export default function CategoriesButton() {
               <Box sx={{ transition: "all 0.4s ease-in-out", mb: 1 }}>
                 <Image
                   src="/images/categories/more.jpg"
-                  width="150px"
-                  height="150px"
+                  width="130px"
+                  height="130px"
                   alt=""
                 />
               </Box>
               <Typography
-                component="h5"
-                variant="h5"
+                component="h6"
+                variant="h6"
                 align="center"
                 sx={{ textTransform: "capitalize" }}
               >

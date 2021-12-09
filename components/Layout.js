@@ -76,7 +76,7 @@ export default function Layout({ children, title, sx }) {
             backgroundRepeat: "no-repeat",
           }}
         >
-          <Container sx={{ py: 3 }}>
+          <Container sx={{ py: 3, mt: 3 }}>
             <Grid container>
               <Grid item md={6} xs={12}>
                 <List p={0}>
