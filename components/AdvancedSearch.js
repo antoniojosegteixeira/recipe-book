@@ -9,14 +9,18 @@ import {
   List,
   ListItem,
 } from "@mui/material";
-import { Store } from "../utils/Store";
 import TrashIcon from "@mui/icons-material/Delete";
 import categories from "../utils/categories";
 
 export default function AdvancedSearch({ id, title, icon }) {
-  const { state, dispatch } = useContext(Store);
-  const { search } = state;
   const [open, setOpen] = useState(false);
+  const [search, setSearch] = useState({
+    type: [],
+    cuisine: [],
+    intolerances: [],
+    diet: [],
+  });
+  const uniqueFilters = ["type", "diet"];
 
   const handleOpen = () => {
     setOpen(true);
@@ -25,17 +29,16 @@ export default function AdvancedSearch({ id, title, icon }) {
     setOpen(false);
   };
 
-  const handleAddClick = (e) => {
-    e.preventDefault();
+  const handleClick = (group, value) => {
+    if (uniqueFilters.includes(group)) {
+      setSearch({ ...search, [group]: value });
+    } else {
+      if (!search[group].includes(value))
+        setSearch({ ...search, [group]: [...search[group], value] });
+    }
   };
 
-  const handleRemoveClick = (e) => {
-    e.preventDefault();
-    dispatch({
-      type: "REMOVE_FAVORITE",
-      payload: { id: id.toString(), title },
-    });
-  };
+  console.log(search);
 
   const style = {
     position: "absolute",
@@ -68,11 +71,10 @@ export default function AdvancedSearch({ id, title, icon }) {
             </Typography>
             {Object.keys(categories).map((parameter, i) => {
               return (
-                <>
+                <div key={i}>
                   <Typography
                     component="h2"
                     variant="h5"
-                    key={i}
                     sx={{ textTransform: "capitalize" }}
                   >
                     {parameter}
@@ -85,7 +87,10 @@ export default function AdvancedSearch({ id, title, icon }) {
                             i < Math.floor(categories[parameter].length / 2)
                           ) {
                             return (
-                              <ListItem key={item}>
+                              <ListItem
+                                key={item}
+                                onClick={() => handleClick(parameter, item)}
+                              >
                                 <Typography variant="h6">{item}</Typography>
                               </ListItem>
                             );
@@ -113,7 +118,7 @@ export default function AdvancedSearch({ id, title, icon }) {
                       </List>
                     </Grid>
                   </Grid>
-                </>
+                </div>
               );
             })}
           </Container>
