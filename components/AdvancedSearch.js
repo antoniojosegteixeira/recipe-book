@@ -12,13 +12,13 @@ import {
 import TrashIcon from "@mui/icons-material/Delete";
 import categories from "../utils/categories";
 
-export default function AdvancedSearch({ id, title, icon }) {
+export default function AdvancedSearch() {
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState({
-    type: [],
+    type: "",
     cuisine: [],
     intolerances: [],
-    diet: [],
+    diet: "",
   });
   const uniqueFilters = ["type", "diet"];
 
@@ -30,11 +30,25 @@ export default function AdvancedSearch({ id, title, icon }) {
   };
 
   const handleClick = (group, value) => {
+    // Checking if it's an unique value
     if (uniqueFilters.includes(group)) {
-      setSearch({ ...search, [group]: value });
+      if (search[group] === value) {
+        setSearch({ ...search, [group]: "" });
+      } else {
+        setSearch({ ...search, [group]: value });
+      }
+      return;
+    }
+
+    // Checking if it's an array
+    if (!search[group].includes(value)) {
+      setSearch({ ...search, [group]: [...search[group], value] });
     } else {
-      if (!search[group].includes(value))
-        setSearch({ ...search, [group]: [...search[group], value] });
+      const newClone = [...search[group]];
+      const index = newClone.indexOf(value);
+      newClone.splice(index, 1);
+
+      setSearch({ ...search, [group]: newClone });
     }
   };
 
@@ -107,7 +121,10 @@ export default function AdvancedSearch({ id, title, icon }) {
                             i >= Math.floor(categories[parameter].length / 2)
                           ) {
                             return (
-                              <ListItem key={item}>
+                              <ListItem
+                                key={item}
+                                onClick={() => handleClick(parameter, item)}
+                              >
                                 <Typography variant="h6">{item}</Typography>
                               </ListItem>
                             );
