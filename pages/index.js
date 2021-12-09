@@ -36,7 +36,7 @@ const Index = () => {
           flexDirection: "column",
         }}
       >
-        <Box sx={{ maxWidth: "700px", m: 2 }}>
+        <Box sx={{ maxWidth: "700px", m: 2, mt: -4 }}>
           <Typography
             component="h1"
             align="center"

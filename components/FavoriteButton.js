@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Button } from "@mui/material";
 import { Store } from "../utils/Store";
+import TrashIcon from "@mui/icons-material/Delete";
 
-export default function FavoriteButton({ id, title }) {
+export default function FavoriteButton({ id, title, icon }) {
   const { state, dispatch } = useContext(Store);
   const { favorites } = state;
   const [isAdded, setIsAdded] = useState(null);
@@ -31,7 +32,13 @@ export default function FavoriteButton({ id, title }) {
   return (
     <>
       {isAdded ? (
-        <Button onClick={handleRemoveClick}>Remove from favorites</Button>
+        <Button onClick={handleRemoveClick}>
+          {icon ? (
+            <TrashIcon sx={{ color: "gray", fontSize: 25 }} />
+          ) : (
+            "Remove from favorites"
+          )}
+        </Button>
       ) : isAdded === null ? null : (
         <Button onClick={handleAddClick}>Add to favorites</Button>
       )}

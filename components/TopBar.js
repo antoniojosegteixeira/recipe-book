@@ -11,7 +11,6 @@ import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import TextField from "@mui/material/Menu";
 import HomeIcon from "@mui/icons-material/Home";
-import SearchIcon from "@mui/icons-material/Search";
 import StarIcon from "@mui/icons-material/Star";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import NextLink from "next/link";
