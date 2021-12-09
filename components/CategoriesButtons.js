@@ -45,6 +45,7 @@ export default function CategoriesButton() {
                 display: "flex",
                 justifyContent: "center",
                 maxWidth: "160px",
+                mt: 1,
               }}
             >
               <NextLink href={`/search?type=${item.type}`} passHref>

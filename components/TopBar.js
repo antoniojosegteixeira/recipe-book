@@ -98,7 +98,7 @@ export default function TopBar({ nosearch }) {
   );
 
   return (
-    <Box sx={{ flexGrow: 1, position: "relative", minHeight: "60px" }}>
+    <Box sx={{ flexGrow: 1, position: "relative", minHeight: "48px" }}>
       <AppBar position="fixed" color="secondary">
         <Toolbar>
           <NextLink href="/" passHref>
@@ -108,9 +108,9 @@ export default function TopBar({ nosearch }) {
                 component="div"
                 color="primary.dark"
                 sx={{
-                  display: { xs: "none", sm: "block" },
+                  display: { xs: nosearch ? "block" : "none", sm: "block" },
                   fontFamily: "Your Dream",
-                  fontSize: 50,
+                  fontSize: { xs: 35, sm: 50 },
                   lineHeight: 0.8,
                 }}
               >
