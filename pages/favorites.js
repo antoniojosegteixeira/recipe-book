@@ -16,6 +16,7 @@ import { Store } from "../utils/Store";
 import Layout from "../components/Layout";
 import TopBar from "../components/TopBar";
 import FavoriteButton from "../components/FavoriteButton";
+import AdvancedSearch from "../components/AdvancedSearch";
 
 const Favorites = () => {
   const { state } = useContext(Store);
@@ -71,6 +72,7 @@ const Favorites = () => {
             )}
           </ListItem>
         </List>
+        <AdvancedSearch />
       </Container>
     </Layout>
   );

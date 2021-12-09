@@ -1,0 +1,124 @@
+import React, { useContext, useEffect, useState } from "react";
+import {
+  Button,
+  Modal,
+  Box,
+  Typography,
+  Container,
+  Grid,
+  List,
+  ListItem,
+} from "@mui/material";
+import { Store } from "../utils/Store";
+import TrashIcon from "@mui/icons-material/Delete";
+import categories from "../utils/categories";
+
+export default function AdvancedSearch({ id, title, icon }) {
+  const { state, dispatch } = useContext(Store);
+  const { search } = state;
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleAddClick = (e) => {
+    e.preventDefault();
+  };
+
+  const handleRemoveClick = (e) => {
+    e.preventDefault();
+    dispatch({
+      type: "REMOVE_FAVORITE",
+      payload: { id: id.toString(), title },
+    });
+  };
+
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    maxWidth: 800,
+    maxHeight: "100%",
+    bgcolor: "background.paper",
+    border: "2px solid #000",
+    borderRadius: "7px",
+    boxShadow: 24,
+    p: 4,
+    overflow: "scroll",
+  };
+
+  return (
+    <div>
+      <Button onClick={handleOpen}>Open modal</Button>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Container>
+            <Typography variant="h5" component="h2">
+              Advanced Search
+            </Typography>
+            {Object.keys(categories).map((parameter, i) => {
+              return (
+                <>
+                  <Typography
+                    component="h2"
+                    variant="h5"
+                    key={i}
+                    sx={{ textTransform: "capitalize" }}
+                  >
+                    {parameter}
+                  </Typography>
+                  <Grid container>
+                    <Grid item xs={6}>
+                      <List>
+                        {categories[parameter].map((item, i) => {
+                          if (
+                            i < Math.floor(categories[parameter].length / 2)
+                          ) {
+                            return (
+                              <ListItem key={item}>
+                                <Typography variant="h6">{item}</Typography>
+                              </ListItem>
+                            );
+                          } else {
+                            return null;
+                          }
+                        })}
+                      </List>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <List>
+                        {categories[parameter].map((item, i) => {
+                          if (
+                            i >= Math.floor(categories[parameter].length / 2)
+                          ) {
+                            return (
+                              <ListItem key={item}>
+                                <Typography variant="h6">{item}</Typography>
+                              </ListItem>
+                            );
+                          } else {
+                            return null;
+                          }
+                        })}
+                      </List>
+                    </Grid>
+                  </Grid>
+                </>
+              );
+            })}
+          </Container>
+        </Box>
+      </Modal>
+    </div>
+  );
+}
