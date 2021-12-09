@@ -17,7 +17,7 @@ import MoreIcon from "@mui/icons-material/MoreVert";
 import NextLink from "next/link";
 import SearchBar from "../components/SearchBar";
 
-export default function TopBar() {
+export default function TopBar({ nosearch }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -98,16 +98,6 @@ export default function TopBar() {
     </Menu>
   );
 
-  const submitHandler = (e) => {
-    e.preventDefault();
-    if (e !== "") {
-      router.push({
-        pathname: "/search",
-        query: { query: search },
-      });
-    }
-  };
-
   return (
     <Box sx={{ flexGrow: 1, position: "relative", minHeight: "60px" }}>
       <AppBar position="fixed" color="secondary">
@@ -130,7 +120,7 @@ export default function TopBar() {
             </Link>
           </NextLink>
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ flexGrow: 2 }}>
+          <Box sx={{ flexGrow: 2, display: nosearch ? "none" : "block" }}>
             <SearchBar />
           </Box>
 

@@ -39,7 +39,12 @@ const SearchPage = ({ data, page }) => {
     <Layout>
       <TopBar />
       <Container sx={{ py: 4 }}>
-        <Typography>Search Results</Typography>
+        <Typography
+          variant="h6"
+          sx={{ pl: { xs: 2, sm: 5, md: 7, lg: 9 }, pb: 2 }}
+        >
+          Search Results for {`"${router?.query?.query}"`}
+        </Typography>
         <Grid container spacing={3} justifyContent="center">
           {data?.results.map((recipe) => {
             return (

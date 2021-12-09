@@ -36,7 +36,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         search: {
-          ...search,
+          ...state.search,
           ...action.payload,
         },
       };

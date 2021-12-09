@@ -17,10 +17,12 @@ import { alpha } from "@mui/material/styles";
 import PopularCard from "../components/PopularCard";
 import CategoriesButtons from "../components/CategoriesButtons";
 import SearchBar from "../components/SearchBar";
+import TopBar from "../components/TopBar";
 
 const Index = () => {
   return (
     <Layout>
+      <TopBar nosearch />
       <Box
         sx={{
           bgcolor: "background.paper",
