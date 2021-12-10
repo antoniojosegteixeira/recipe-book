@@ -1,7 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { Store } from "../utils/Store";
 import TrashIcon from "@mui/icons-material/Delete";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
 export default function FavoriteButton({ id, title, icon }) {
   const { state, dispatch } = useContext(Store);
@@ -36,11 +38,26 @@ export default function FavoriteButton({ id, title, icon }) {
           {icon ? (
             <TrashIcon sx={{ color: "gray", fontSize: 25 }} />
           ) : (
-            "Remove from favorites"
+            <>
+              <FavoriteIcon color="error" />
+              <Typography variant="h6" pl={1} sx={{ color: "primary.dark" }}>
+                Remove from favorites
+              </Typography>
+            </>
           )}
         </Button>
       ) : isAdded === null ? null : (
-        <Button onClick={handleAddClick}>Add to favorites</Button>
+        <Button
+          onClick={handleAddClick}
+          sx={{
+            color: "primary.dark",
+          }}
+        >
+          <FavoriteBorderIcon />
+          <Typography variant="h6" pl={1} sx={{ color: "primary.dark" }}>
+            Add to favorites
+          </Typography>
+        </Button>
       )}
     </>
   );

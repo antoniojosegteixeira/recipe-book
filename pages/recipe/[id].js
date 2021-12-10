@@ -32,13 +32,20 @@ const Recipe = ({ data }) => {
               height={500}
               layout="responsive"
             ></Image>
+            <Box
+              sx={{
+                pt: 3,
+                pb: 2,
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <FavoriteButton id={data.id} title={data.title} />
+            </Box>
           </Grid>
         </Grid>
         <Box sx={{ pl: { sm: 7 } }}>
           <List>
-            <ListItem>
-              <FavoriteButton id={data.id} title={data.title} />
-            </ListItem>
             <ListItem>
               <Typography component="h4" variant="h4">
                 Ingredients
