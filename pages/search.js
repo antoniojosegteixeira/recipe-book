@@ -164,27 +164,32 @@ export async function getServerSideProps(context) {
   const { query } = context;
   const page = query.page ? query.page : 1;
 
-  /*
-  const url = `${BASE_URL}/complexSearch`;
-  const options = {
-    params: {
-      ...query,
-      offset: page * 12,
-      number: 12,
-      apiKey: process.env.API_KEY,
-    },
-    headers: {
-      "Content-Type": "application/json",
-    },
-  };
+  const mock = true;
+  let result;
 
-  const { data } = await axios.get(url, options);
-  */
+  if (!mock) {
+    const url = `${BASE_URL}/complexSearch`;
+    const options = {
+      params: {
+        ...query,
+        offset: page * 12,
+        number: 12,
+        apiKey: process.env.API_KEY,
+      },
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const { data } = await axios.get(url, options);
+    result = data;
+  } else {
+    result = search;
+  }
 
   return {
     props: {
-      data: search,
-      page,
+      data: result,
     },
   };
 }
