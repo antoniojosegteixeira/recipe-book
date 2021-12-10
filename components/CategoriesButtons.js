@@ -1,7 +1,5 @@
-import React, { useContext } from "react";
-import { useRouter } from "next/router";
-import { Store } from "../utils/Store";
-import { Grid, Box, Typography, Link, List, ListItem } from "@mui/material";
+import React from "react";
+import { Grid, Box, Typography, Link } from "@mui/material";
 import NextLink from "next/link";
 import Image from "next/image";
 
@@ -20,17 +18,6 @@ const categories = [
 ];
 
 export default function CategoriesButton() {
-  const { dispatch } = useContext(Store);
-  const router = useRouter();
-
-  const handleClick = (item) => {
-    dispatch({
-      type: "ADD_SEARCH",
-      payload: { type: item },
-    });
-    router.push(`/search?type=${item}`);
-  };
-
   return (
     <Box sx={{ my: 4 }}>
       <Typography component="h2" variant="h2" align="center">
@@ -50,7 +37,6 @@ export default function CategoriesButton() {
             <Grid
               container
               item
-              key={item.type}
               xs={6}
               sm={3}
               md={2}
@@ -60,38 +46,41 @@ export default function CategoriesButton() {
                 maxWidth: "160px",
                 mt: 1,
               }}
+              key={item.type}
             >
-              <Link
-                sx={{
-                  textDecoration: "none",
-                  color: "primary.dark",
-                  "& img": {
-                    borderRadius: "50%",
-                  },
+              <NextLink href={`/search?type=${item.type}`} passHref>
+                <Link
+                  sx={{
+                    cursor: "pointer",
+                    textDecoration: "none",
+                    color: "primary.dark",
+                    "& img": {
+                      borderRadius: "50%",
+                    },
 
-                  "&:hover": {
-                    "& .MuiBox-root": {
-                      transform: "scale(1.08)",
+                    "&:hover": {
+                      "& .MuiBox-root": {
+                        transform: "scale(1.08)",
+                      },
+                      "& h6": {
+                        color: "primary.main",
+                      },
                     },
-                    "& h6": {
-                      color: "primary.main",
-                    },
-                  },
-                }}
-                onClick={() => handleClick(item.type)}
-              >
-                <Box sx={{ transition: "all 0.4s ease-in-out", mb: 1 }}>
-                  <Image src={item.img} width="130px" height="130px" alt="" />
-                </Box>
-                <Typography
-                  component="h6"
-                  variant="h6"
-                  align="center"
-                  sx={{ textTransform: "capitalize" }}
+                  }}
                 >
-                  {item.type}
-                </Typography>
-              </Link>
+                  <Box sx={{ transition: "all 0.4s ease-in-out", mb: 1 }}>
+                    <Image src={item.img} width="130px" height="130px" alt="" />
+                  </Box>
+                  <Typography
+                    component="h6"
+                    variant="h6"
+                    align="center"
+                    sx={{ textTransform: "capitalize" }}
+                  >
+                    {item.type}
+                  </Typography>
+                </Link>
+              </NextLink>
             </Grid>
           );
         })}

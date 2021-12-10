@@ -1,5 +1,7 @@
 /* eslint-disable @next/next/no-page-custom-font */
-import React from "react";
+import React, { useContext } from "react";
+import { useRouter } from "next/router";
+import { Store } from "../utils/Store";
 import Head from "next/head";
 import {
   ThemeProvider,
@@ -10,26 +12,27 @@ import {
   Typography,
   List,
   ListItem,
+  Link,
 } from "@mui/material";
 import theme from "../utils/theme";
 import NextLink from "next/link";
 import MyLink from "../components/MyLink";
 
 const tags = [
-  "main course",
-  "side dish",
-  "dessert",
-  "appetizer",
-  "salad",
-  "bread",
-  "breakfast",
-  "soup",
-  "beverage",
-  "sauce",
-  "marinade",
-  "fingerfood",
-  "snack",
-  "drink",
+  "Main course",
+  "Side Dish",
+  "Dessert",
+  "Appetizer",
+  "Salad",
+  "Bread",
+  "Breakfast",
+  "Soup",
+  "Beverage",
+  "Sauce",
+  "Marinade",
+  "Fingerfood",
+  "Snack",
+  "Drink",
 ];
 
 export default function Layout({ children, title, sx }) {
