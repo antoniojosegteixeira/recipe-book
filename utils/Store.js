@@ -8,6 +8,7 @@ const initialState = {
     ? JSON.parse(Cookies.get("favorites"))
     : [],
   search: {
+    query: "",
     type: "",
     cuisine: [],
     intolerances: [],

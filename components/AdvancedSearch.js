@@ -26,6 +26,7 @@ export default function AdvancedSearch() {
   const { state, dispatch } = useContext(Store);
   const { search } = state;
   const [open, setOpen] = useState(false);
+  const router = useRouter();
 
   const [type, setType] = useState(search.type);
   const [cuisine, setCuisine] = useState(search.cuisine);
@@ -35,12 +36,32 @@ export default function AdvancedSearch() {
   const handleOpen = () => {
     setOpen(true);
   };
+
   const handleClose = () => {
     setOpen(false);
     dispatch({
       type: "ADD_SEARCH",
       payload: { type, cuisine, intolerances, diet },
     });
+  };
+
+  const handleSubmit = () => {
+    dispatch({
+      type: "ADD_SEARCH",
+      payload: { type, cuisine, intolerances, diet },
+    });
+    const advSearch = {
+      type,
+      cuisine: cuisine.join(","),
+      intolerances: intolerances.join(","),
+      diet,
+    };
+
+    router.push({
+      pathname: "/search",
+      query: { query: search.query, ...advSearch },
+    });
+    setOpen(false);
   };
 
   const handleCuisineChange = (v) => {
@@ -93,14 +114,18 @@ export default function AdvancedSearch() {
             <Typography variant="h5" component="h2">
               Advanced Search
             </Typography>
-            <form onSubmit={handleClose}>
+            <form onSubmit={handleSubmit}>
               <FormControl component="fieldset" fullWidth sx={{}}>
                 <FormLabel component="legend">Type</FormLabel>
                 <RadioGroup
                   aria-label="Type"
                   name="controlled-radio-buttons-group"
                   value={type}
-                  onChange={(e) => setType(e.target.value)}
+                  onClick={(v) =>
+                    v.target.value === type
+                      ? setType("")
+                      : setType(v.target.value)
+                  }
                   row
                 >
                   {categories.type.map((item) => {
@@ -173,7 +198,11 @@ export default function AdvancedSearch() {
                   aria-label="Diet"
                   name="controlled-radio-buttons-group"
                   value={diet}
-                  onChange={(e) => setDiet(e.target.value)}
+                  onClick={(v) =>
+                    v.target.value === diet
+                      ? setDiet("")
+                      : setDiet(v.target.value)
+                  }
                   row
                 >
                   {categories.diet.map((item) => {

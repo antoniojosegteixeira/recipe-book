@@ -36,6 +36,19 @@ const SearchPage = ({ data, page }) => {
     });
   };
 
+  const filters = () => {
+    let filterString = `${query.type}, ${query.cuisine.replace(/,/g, ", ")}, 
+  ${query.intolerances.replace(/,/g, ", ")}, ${query.diet}`.trim();
+    if (filterString.charAt(0) === ",")
+      filterString = filterString.substring(1);
+
+    if (filterString.charAt(filterString.length - 1) === ",") {
+      filterString = filterString.slice(0, filterString.length - 1);
+    }
+
+    return filterString;
+  };
+
   return (
     <Layout>
       <TopBar />
@@ -50,9 +63,7 @@ const SearchPage = ({ data, page }) => {
           variant="h6"
           sx={{ pl: { xs: 2, sm: 5, md: 7, lg: 9 }, pb: 2 }}
         >
-          Filters:{" "}
-          {`${query.type}, ${query.cuisine.replace(/,/g, ", ")}, 
-          ${query.intolerances.replace(/,/g, ", ")}, ${query.diet}`}
+          Filters: {filters()}
         </Typography>
         <Grid container spacing={3} justifyContent="center">
           {data?.results.map((recipe) => {

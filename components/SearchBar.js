@@ -28,7 +28,7 @@ export default function SearchBar() {
         intolerances: search.intolerances.join(","),
         diet: search.diet,
       };
-      console.log(advSearch);
+
       router.push({
         pathname: "/search",
         query: { query: input, ...advSearch },
