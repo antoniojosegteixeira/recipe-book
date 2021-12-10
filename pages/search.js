@@ -36,17 +36,33 @@ const SearchPage = ({ data, page }) => {
     });
   };
 
-  const filters = () => {
-    let filterString = `${query.type}, ${query.cuisine.replace(/,/g, ", ")}, 
-  ${query.intolerances.replace(/,/g, ", ")}, ${query.diet}`.trim();
-    if (filterString.charAt(0) === ",")
-      filterString = filterString.substring(1);
-
-    if (filterString.charAt(filterString.length - 1) === ",") {
-      filterString = filterString.slice(0, filterString.length - 1);
+  const Filters = () => {
+    for (let a in search.query) {
+      console.log(a);
     }
-
-    return filterString;
+    return (
+      <>
+        Filters:
+        <Grid container spacing={1}>
+          <Grid item sx={{ border: "1px solid black" }}>
+            <Typography
+              component="div"
+              variant="h6"
+              color="secondary"
+              sx={{
+                bgcolor: "primary.main",
+                borderRadius: "3px",
+                fontWeight: "regular",
+                width: "auto",
+                px: 0.8,
+              }}
+            >
+              {query.type}
+            </Typography>
+          </Grid>
+        </Grid>
+      </>
+    );
   };
 
   return (
@@ -57,13 +73,15 @@ const SearchPage = ({ data, page }) => {
           variant="h6"
           sx={{ pl: { xs: 2, sm: 5, md: 7, lg: 9 }, pb: 2 }}
         >
-          Search Results for {`"${router?.query?.query}"`}
+          {router?.query?.query
+            ? `Search Results for "${router?.query?.query}"`
+            : null}
         </Typography>
         <Typography
           variant="h6"
           sx={{ pl: { xs: 2, sm: 5, md: 7, lg: 9 }, pb: 2 }}
         >
-          Filters: {filters()}
+          <Filters />
         </Typography>
         <Grid container spacing={3} justifyContent="center">
           {data?.results.map((recipe) => {

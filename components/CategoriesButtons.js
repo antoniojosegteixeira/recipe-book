@@ -1,23 +1,36 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useRouter } from "next/router";
+import { Store } from "../utils/Store";
 import { Grid, Box, Typography, Link, List, ListItem } from "@mui/material";
 import NextLink from "next/link";
 import Image from "next/image";
 
 const categories = [
-  { type: "dessert", img: "/images/categories/cookies.jpg" },
-  { type: "salad", img: "/images/categories/salad.jpg" },
-  { type: "breakfast", img: "/images/categories/breakfast.jpg" },
-  { type: "drinks", img: "/images/categories/drinks.jpg" },
-  { type: "beverage", img: "/images/categories/beverage.jpg" },
-  { type: "marinade", img: "/images/categories/marinade.jpg" },
-  { type: "snack", img: "/images/categories/snack.jpg" },
-  { type: "side dish", img: "/images/categories/sideDish.jpg" },
-  { type: "appetizer", img: "/images/categories/appetizer.jpg" },
-  { type: "bread", img: "/images/categories/bread.jpg" },
-  { type: "soup", img: "/images/categories/soup.jpg" },
+  { type: "Dessert", img: "/images/categories/cookies.jpg" },
+  { type: "Salad", img: "/images/categories/salad.jpg" },
+  { type: "Breakfast", img: "/images/categories/breakfast.jpg" },
+  { type: "Drinks", img: "/images/categories/drinks.jpg" },
+  { type: "Beverage", img: "/images/categories/beverage.jpg" },
+  { type: "Marinade", img: "/images/categories/marinade.jpg" },
+  { type: "Snack", img: "/images/categories/snack.jpg" },
+  { type: "Side Dish", img: "/images/categories/sideDish.jpg" },
+  { type: "Appetizer", img: "/images/categories/appetizer.jpg" },
+  { type: "Bread", img: "/images/categories/bread.jpg" },
+  { type: "Soup", img: "/images/categories/soup.jpg" },
 ];
 
 export default function CategoriesButton() {
+  const { dispatch } = useContext(Store);
+  const router = useRouter();
+
+  const handleClick = (item) => {
+    dispatch({
+      type: "ADD_SEARCH",
+      payload: { type: item },
+    });
+    router.push(`/search?type=${item}`);
+  };
+
   return (
     <Box sx={{ my: 4 }}>
       <Typography component="h2" variant="h2" align="center">
@@ -48,38 +61,37 @@ export default function CategoriesButton() {
                 mt: 1,
               }}
             >
-              <NextLink href={`/search?type=${item.type}`} passHref>
-                <Link
-                  sx={{
-                    textDecoration: "none",
-                    color: "primary.dark",
-                    "& img": {
-                      borderRadius: "50%",
-                    },
+              <Link
+                sx={{
+                  textDecoration: "none",
+                  color: "primary.dark",
+                  "& img": {
+                    borderRadius: "50%",
+                  },
 
-                    "&:hover": {
-                      "& .MuiBox-root": {
-                        transform: "scale(1.08)",
-                      },
-                      "& h6": {
-                        color: "primary.main",
-                      },
+                  "&:hover": {
+                    "& .MuiBox-root": {
+                      transform: "scale(1.08)",
                     },
-                  }}
+                    "& h6": {
+                      color: "primary.main",
+                    },
+                  },
+                }}
+                onClick={() => handleClick(item.type)}
+              >
+                <Box sx={{ transition: "all 0.4s ease-in-out", mb: 1 }}>
+                  <Image src={item.img} width="130px" height="130px" alt="" />
+                </Box>
+                <Typography
+                  component="h6"
+                  variant="h6"
+                  align="center"
+                  sx={{ textTransform: "capitalize" }}
                 >
-                  <Box sx={{ transition: "all 0.4s ease-in-out", mb: 1 }}>
-                    <Image src={item.img} width="130px" height="130px" alt="" />
-                  </Box>
-                  <Typography
-                    component="h6"
-                    variant="h6"
-                    align="center"
-                    sx={{ textTransform: "capitalize" }}
-                  >
-                    {item.type}
-                  </Typography>
-                </Link>
-              </NextLink>
+                  {item.type}
+                </Typography>
+              </Link>
             </Grid>
           );
         })}
