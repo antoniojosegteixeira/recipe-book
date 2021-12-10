@@ -87,6 +87,7 @@ export default function AdvancedSearch() {
     boxShadow: 24,
     p: { xs: 1, sm: 4 },
     my: 1,
+    mx: 2,
     overflowY: "scroll",
   };
 
@@ -111,7 +112,11 @@ export default function AdvancedSearch() {
       >
         <Box sx={style}>
           <Container maxWidth={false}>
-            <Typography variant="h5" component="h2">
+            <Typography
+              variant="h4"
+              component="h2"
+              sx={{ mt: { xs: 2, sm: 0 }, mb: 2 }}
+            >
               Advanced Search
             </Typography>
             <form onSubmit={handleSubmit}>
@@ -219,7 +224,15 @@ export default function AdvancedSearch() {
                 </RadioGroup>
               </FormControl>
 
-              <Button type="submit">Submit</Button>
+              <Button
+                type="submit"
+                variant="contained"
+                fullWidth
+                color="primary"
+                sx={{ mt: 2 }}
+              >
+                Submit
+              </Button>
             </form>
           </Container>
         </Box>
