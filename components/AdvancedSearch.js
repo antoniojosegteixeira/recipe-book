@@ -120,7 +120,7 @@ export default function AdvancedSearch() {
               <FormControl component="fieldset">
                 <FormLabel component="legend">Cuisine</FormLabel>
                 <FormGroup aria-label="cuisine" name="cuisine-group" row>
-                  {categories.type.map((item) => {
+                  {categories.cuisine.map((item) => {
                     return (
                       <FormControlLabel
                         key={item}

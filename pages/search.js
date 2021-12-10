@@ -24,6 +24,7 @@ import { search } from "../utils/mock";
 
 const SearchPage = ({ data, page }) => {
   const router = useRouter();
+  const { query } = router;
 
   const handlePagination = (e, value) => {
     router.push({
@@ -44,6 +45,14 @@ const SearchPage = ({ data, page }) => {
           sx={{ pl: { xs: 2, sm: 5, md: 7, lg: 9 }, pb: 2 }}
         >
           Search Results for {`"${router?.query?.query}"`}
+        </Typography>
+        <Typography
+          variant="h6"
+          sx={{ pl: { xs: 2, sm: 5, md: 7, lg: 9 }, pb: 2 }}
+        >
+          Filters:{" "}
+          {`${query.type}, ${query.cuisine.replace(/,/g, ", ")}, 
+          ${query.intolerances.replace(/,/g, ", ")}, ${query.diet}`}
         </Typography>
         <Grid container spacing={3} justifyContent="center">
           {data?.results.map((recipe) => {

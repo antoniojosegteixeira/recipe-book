@@ -22,9 +22,16 @@ export default function SearchBar() {
     if (input !== "") {
       dispatch({ type: "ADD_SEARCH", payload: { query: input } });
 
+      const advSearch = {
+        type: search.type,
+        cuisine: search.cuisine.join(","),
+        intolerances: search.intolerances.join(","),
+        diet: search.diet,
+      };
+      console.log(advSearch);
       router.push({
         pathname: "/search",
-        query: { query: input },
+        query: { query: input, ...advSearch },
       });
     }
   };
