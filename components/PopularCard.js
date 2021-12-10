@@ -1,35 +1,39 @@
 import React from "react";
-import { Grid, Box } from "@mui/material";
+import { Grid, Box, Link } from "@mui/material";
+import NextLink from "next/link";
 
 export default function PopularCard() {
   return (
     <Grid container spacing={2} sx={{ pt: 2 }}>
       <Grid item container xs={12} md={6} direction="column">
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            minHeight: "37rem",
-            borderRadius: "5px",
-            overflow: "hidden",
-          }}
-        >
+        <NextLink href="/recipe/661835" passHref>
           <Box
+            as="a"
             sx={{
               display: "flex",
               justifyContent: "center",
-              backgroundImage: `url(/images/margarita.jpg)`,
-              backgroundSize: "cover",
-              backgroundPosition: "50%",
-              height: "100%",
-              width: "100%",
-              transition: "0.4s ease-in-out",
-              "&:hover": {
-                transform: "scale(1.04)",
-              },
+              minHeight: "37rem",
+              borderRadius: "5px",
+              overflow: "hidden",
             }}
-          ></Box>
-        </Box>
+          >
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                backgroundImage: `url(/images/margarita.jpg)`,
+                backgroundSize: "cover",
+                backgroundPosition: "50%",
+                height: "100%",
+                width: "100%",
+                transition: "0.4s ease-in-out",
+                "&:hover": {
+                  transform: "scale(1.04)",
+                },
+              }}
+            ></Box>
+          </Box>
+        </NextLink>
       </Grid>
       <Grid
         item
@@ -37,61 +41,69 @@ export default function PopularCard() {
         xs={12}
         md={6}
         spacing={2}
-        sx={{ flexDirection: { xs: "column", md: "row" } }}
+        sx={{ flexDirection: { xs: "row", sm: "column", md: "row" } }}
       >
         <Grid item xs={12}>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              minHeight: "18rem",
-              borderRadius: "5px",
-              overflow: "hidden",
-            }}
-          >
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                backgroundImage: `url(/images/margarita.jpg)`,
-                backgroundSize: "cover",
-                backgroundPosition: "50%",
-                minHeight: "18rem",
-                width: "100%",
-                transition: "0.4s ease-in-out",
-                "&:hover": {
-                  transform: "scale(1.04)",
-                },
-              }}
-            ></Box>
-          </Box>
+          <NextLink href="/recipe/1515523" passHref>
+            <Link>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  minHeight: "18rem",
+                  borderRadius: "5px",
+                  overflow: "hidden",
+                }}
+              >
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    backgroundImage: `url(/images/chicken.jpg)`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "50%",
+                    minHeight: "18rem",
+                    width: "100%",
+                    transition: "0.4s ease-in-out",
+                    "&:hover": {
+                      transform: "scale(1.04)",
+                    },
+                  }}
+                ></Box>
+              </Box>
+            </Link>
+          </NextLink>
         </Grid>
         <Grid item xs={12}>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              minHeight: "18rem",
-              borderRadius: "5px",
-              overflow: "hidden",
-            }}
-          >
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                backgroundImage: `url(/images/margarita.jpg)`,
-                backgroundSize: "cover",
-                backgroundPosition: "50%",
-                minHeight: "18rem",
-                width: "100%",
-                transition: "0.4s ease-in-out",
-                "&:hover": {
-                  transform: "scale(1.04)",
-                },
-              }}
-            ></Box>
-          </Box>
+          <NextLink href="/recipe/648183" passHref>
+            <Link>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  minHeight: "18rem",
+                  borderRadius: "5px",
+                  overflow: "hidden",
+                }}
+              >
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    backgroundImage: `url(/images/pannacotta.jpg)`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "50%",
+                    minHeight: "18rem",
+                    width: "100%",
+                    transition: "0.4s ease-in-out",
+                    "&:hover": {
+                      transform: "scale(1.04)",
+                    },
+                  }}
+                ></Box>
+              </Box>
+            </Link>
+          </NextLink>
         </Grid>
       </Grid>
     </Grid>
