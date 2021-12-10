@@ -20,6 +20,7 @@ import {
   IconButton,
 } from "@mui/material";
 import ConfigIcon from "@mui/icons-material/Settings";
+import CloseIcon from "@mui/icons-material/Close";
 import categories from "../utils/categories";
 
 export default function AdvancedSearch() {
@@ -82,7 +83,6 @@ export default function AdvancedSearch() {
     maxHeight: "100%",
     maxWidth: 800,
     bgcolor: "background.paper",
-    border: "2px solid #000",
     borderRadius: "7px",
     boxShadow: 24,
     p: { xs: 1, sm: 4 },
@@ -111,11 +111,20 @@ export default function AdvancedSearch() {
         }}
       >
         <Box sx={style}>
-          <Container maxWidth={false}>
+          <Container maxWidth={false} sx={{ position: "relative" }}>
+            <IconButton
+              sx={{
+                position: "absolute",
+                right: 0,
+              }}
+              onClick={handleClose}
+            >
+              <CloseIcon />
+            </IconButton>
             <Typography
               variant="h4"
               component="h2"
-              sx={{ mt: { xs: 2, sm: 0 }, mb: 2 }}
+              sx={{ mt: { xs: 2, sm: 0 }, mb: 2, mr: 3 }}
             >
               Advanced Search
             </Typography>
