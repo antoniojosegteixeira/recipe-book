@@ -37,29 +37,37 @@ const SearchPage = ({ data, page }) => {
   };
 
   const Filters = () => {
-    for (let a in search.query) {
-      console.log(a);
-    }
     return (
       <>
         Filters:
         <Grid container spacing={1}>
-          <Grid item sx={{ border: "1px solid black" }}>
-            <Typography
-              component="div"
-              variant="h6"
-              color="secondary"
-              sx={{
-                bgcolor: "primary.main",
-                borderRadius: "3px",
-                fontWeight: "regular",
-                width: "auto",
-                px: 0.8,
-              }}
-            >
-              {query.type}
-            </Typography>
-          </Grid>
+          {Object.values(query).map((item) => {
+            const items = item.split(",");
+
+            return items.map((item) => {
+              if (item !== "") {
+                return (
+                  <Grid item sx={{ minWidth: 80 }} key={item}>
+                    <Typography
+                      component="div"
+                      variant="h6"
+                      color="secondary"
+                      align="center"
+                      sx={{
+                        bgcolor: "primary.main",
+                        borderRadius: "3px",
+                        fontWeight: "regular",
+                        width: "auto",
+                        px: 0.8,
+                      }}
+                    >
+                      {item}
+                    </Typography>
+                  </Grid>
+                );
+              }
+            });
+          })}
         </Grid>
       </>
     );
