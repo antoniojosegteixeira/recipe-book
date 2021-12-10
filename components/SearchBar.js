@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
+import AdvancedSearch from "./AdvancedSearch";
 
 export default function SearchBar() {
   const router = useRouter();
@@ -16,12 +17,11 @@ export default function SearchBar() {
   const { search } = state;
   const [input, setInput] = useState(search.query ? search.query : "");
 
-  console.log(search);
-
   const submitHandler = (e) => {
     e.preventDefault();
     if (input !== "") {
       dispatch({ type: "ADD_SEARCH", payload: { query: input } });
+
       router.push({
         pathname: "/search",
         query: { query: input },
@@ -51,6 +51,11 @@ export default function SearchBar() {
                     color: "rgba(0, 0, 0, 0.35)",
                   }}
                 />
+              </InputAdornment>
+            ),
+            endAdornment: (
+              <InputAdornment position="end">
+                <AdvancedSearch />
               </InputAdornment>
             ),
           }}

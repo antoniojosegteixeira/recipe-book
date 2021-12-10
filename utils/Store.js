@@ -7,7 +7,12 @@ const initialState = {
   favorites: Cookies.get("favorites")
     ? JSON.parse(Cookies.get("favorites"))
     : [],
-  search: {},
+  search: {
+    type: "",
+    cuisine: [],
+    intolerances: [],
+    diet: "",
+  },
 };
 
 const reducer = (state, action) => {

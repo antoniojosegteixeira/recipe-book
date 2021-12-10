@@ -1,4 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { Store } from "../utils/Store";
 import {
   Button,
   Modal,
@@ -15,23 +17,30 @@ import {
   FormLabel,
   Radio,
   RadioGroup,
+  IconButton,
 } from "@mui/material";
-import TrashIcon from "@mui/icons-material/Delete";
+import ConfigIcon from "@mui/icons-material/Settings";
 import categories from "../utils/categories";
 
 export default function AdvancedSearch() {
+  const { state, dispatch } = useContext(Store);
+  const { search } = state;
   const [open, setOpen] = useState(false);
 
-  const [type, setType] = useState("");
-  const [cuisine, setCuisine] = useState(["Salad", "Bread"]);
-  const [intolerances, setIntolerances] = useState([]);
-  const [diet, setDiet] = useState("");
+  const [type, setType] = useState(search.type);
+  const [cuisine, setCuisine] = useState(search.cuisine);
+  const [intolerances, setIntolerances] = useState(search.intolerances);
+  const [diet, setDiet] = useState(search.diet);
 
   const handleOpen = () => {
     setOpen(true);
   };
   const handleClose = () => {
     setOpen(false);
+    dispatch({
+      type: "ADD_SEARCH",
+      payload: { type, cuisine, intolerances, diet },
+    });
   };
 
   const handleCuisineChange = (v) => {
@@ -49,35 +58,42 @@ export default function AdvancedSearch() {
   };
 
   const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    maxWidth: 800,
     maxHeight: "100%",
+    maxWidth: 800,
     bgcolor: "background.paper",
     border: "2px solid #000",
     borderRadius: "7px",
     boxShadow: 24,
-    p: 4,
-    overflow: "scroll",
+    p: { xs: 1, sm: 4 },
+    my: 1,
+    overflowY: "scroll",
   };
 
   return (
     <div>
-      <Button onClick={handleOpen}>Open modal</Button>
+      <Button
+        onClick={handleOpen}
+        color="primary"
+        sx={{ minWidth: 0, color: "primary.dark" }}
+      >
+        <ConfigIcon />
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+        }}
       >
         <Box sx={style}>
-          <Container>
+          <Container maxWidth={false}>
             <Typography variant="h5" component="h2">
               Advanced Search
             </Typography>
-            <form>
+            <form onSubmit={handleClose}>
               <FormControl component="fieldset" fullWidth sx={{}}>
                 <FormLabel component="legend">Type</FormLabel>
                 <RadioGroup
