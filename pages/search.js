@@ -37,11 +37,13 @@ const SearchPage = ({ data, page }) => {
   };
 
   const Filters = () => {
+    const filterObj = { ...query };
+    delete filterObj.query;
+    console.log(Object.values(filterObj), Object.values(filterObj).length);
     return (
       <>
-        Filters:
         <Grid container spacing={1}>
-          {Object.values(query).map((item) => {
+          {Object.values(filterObj).map((item) => {
             const items = item.split(",");
 
             return items.map((item) => {
@@ -82,6 +84,7 @@ const SearchPage = ({ data, page }) => {
         <Typography
           variant="h6"
           sx={{ pl: { xs: 2, sm: 5, md: 7, lg: 9 }, pb: 2 }}
+          id="search-results-text"
         >
           {router?.query?.query
             ? `Search Results for "${router?.query?.query}"`
@@ -93,10 +96,15 @@ const SearchPage = ({ data, page }) => {
         >
           <Filters />
         </Typography>
-        <Grid container spacing={3} justifyContent="center">
+        <Grid
+          container
+          spacing={3}
+          justifyContent="center"
+          id="search-card-grid"
+        >
           {data?.results.map((recipe) => {
             return (
-              <Grid item key={recipe.id}>
+              <Grid item key={recipe.id} className="search-recipe-card">
                 <NextLink href={`/recipe/${recipe.id}`} passHref>
                   <Link sx={{ textDecoration: "none" }}>
                     <Card
