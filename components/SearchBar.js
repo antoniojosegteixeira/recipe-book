@@ -38,7 +38,12 @@ export default function SearchBar() {
 
   return (
     <>
-      <form sx={{ width: "100%" }} variant="outlined" onSubmit={submitHandler}>
+      <form
+        sx={{ width: "100%" }}
+        variant="outlined"
+        id="search-form"
+        onSubmit={submitHandler}
+      >
         <TextField
           variant="outlined"
           fullWidth
@@ -48,7 +53,7 @@ export default function SearchBar() {
             bgcolor: "white",
             my: "2px",
           }}
-          id="outlined-start-adornment"
+          id="search-input"
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
