@@ -85,6 +85,7 @@ export default function CategoriesButton() {
           );
         })}
         <Grid
+          container
           item
           xs={6}
           sm={3}
@@ -93,13 +94,15 @@ export default function CategoriesButton() {
             display: "flex",
             justifyContent: "center",
             maxWidth: "160px",
+            mt: 1,
           }}
         >
           <NextLink href={`/search`} passHref>
             <Link
               sx={{
-                color: "primary.dark",
+                cursor: "pointer",
                 textDecoration: "none",
+                color: "primary.dark",
                 "& img": {
                   borderRadius: "50%",
                 },
