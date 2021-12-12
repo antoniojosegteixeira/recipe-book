@@ -27,7 +27,7 @@ describe("Search", () => {
       .should("not.have.length", 0);
   });
 
-  it("should recipe card redirect to recipe page", () => {
+  it("should redirect to recipe page on click", () => {
     cy.get("#search-card-grid").find(".search-recipe-card").first().click();
     cy.location().should((loc) => {
       expect(loc.pathname).to.contain("/recipe");

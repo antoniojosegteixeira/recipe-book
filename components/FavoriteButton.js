@@ -34,7 +34,7 @@ export default function FavoriteButton({ id, title, icon }) {
   return (
     <>
       {isAdded ? (
-        <Button onClick={handleRemoveClick}>
+        <Button onClick={handleRemoveClick} data-cy="remove-favorite">
           {icon ? (
             <TrashIcon sx={{ color: "gray", fontSize: 25 }} />
           ) : (
@@ -52,6 +52,7 @@ export default function FavoriteButton({ id, title, icon }) {
           sx={{
             color: "primary.dark",
           }}
+          data-cy="add-favorite"
         >
           <FavoriteBorderIcon />
           <Typography variant="h6" pl={1} sx={{ color: "primary.dark" }}>
