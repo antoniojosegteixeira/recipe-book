@@ -39,7 +39,7 @@ const SearchPage = ({ data, page }) => {
   const Filters = () => {
     const filterObj = { ...query };
     delete filterObj.query;
-    console.log(Object.values(filterObj), Object.values(filterObj).length);
+    delete filterObj.page;
     return (
       <>
         <Grid container spacing={1}>
@@ -92,7 +92,7 @@ const SearchPage = ({ data, page }) => {
           id="search-results-text"
         >
           {router?.query?.query
-            ? `Search Results for "${router?.query?.query}"`
+            ? `Search results for "${router?.query?.query}"`
             : null}
         </Typography>
         <Typography
@@ -165,6 +165,7 @@ const SearchPage = ({ data, page }) => {
             size="large"
             page={Number(page)}
             onChange={handlePagination}
+            data-cy="pagination-element"
           />
         </Box>
       </Container>
