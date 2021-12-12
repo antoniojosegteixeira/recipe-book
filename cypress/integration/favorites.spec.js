@@ -18,7 +18,7 @@ describe("Favorites", () => {
     cy.get("[data-cy=remove-favorite]").click();
   });
 
-  it.only("should remove favorite data from cookies", () => {
+  it("should remove favorite data from cookies", () => {
     cy.visit("/recipe/661835");
     cy.get("[data-cy=add-favorite]").click();
     cy.get("[data-cy=remove-favorite]").click();

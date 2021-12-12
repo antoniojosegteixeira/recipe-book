@@ -97,6 +97,7 @@ export default function AdvancedSearch() {
         onClick={handleOpen}
         color="primary"
         sx={{ minWidth: 0, color: "primary.dark" }}
+        id="advanced-search-button"
       >
         <ConfigIcon />
       </Button>
@@ -109,6 +110,7 @@ export default function AdvancedSearch() {
           display: "flex",
           justifyContent: "center",
         }}
+        id="advanced-search-modal"
       >
         <Box sx={style}>
           <Container maxWidth={false} sx={{ position: "relative" }}>
@@ -150,6 +152,7 @@ export default function AdvancedSearch() {
                         control={<Radio />}
                         label={item}
                         sx={{ width: "48%" }}
+                        className="advanced-item"
                       />
                     );
                   })}
@@ -163,6 +166,7 @@ export default function AdvancedSearch() {
                     return (
                       <FormControlLabel
                         key={item}
+                        className="advanced-item"
                         control={
                           <Checkbox
                             checked={cuisine.includes(item)}
@@ -189,6 +193,7 @@ export default function AdvancedSearch() {
                   {categories.intolerances.map((item) => {
                     return (
                       <FormControlLabel
+                        className="advanced-item"
                         key={item}
                         control={
                           <Checkbox
@@ -222,6 +227,7 @@ export default function AdvancedSearch() {
                   {categories.diet.map((item) => {
                     return (
                       <FormControlLabel
+                        className="advanced-item"
                         key={item}
                         value={item}
                         control={<Radio />}
@@ -239,6 +245,7 @@ export default function AdvancedSearch() {
                 fullWidth
                 color="primary"
                 sx={{ mt: 2 }}
+                data-cy="advanced-submit"
               >
                 Submit
               </Button>

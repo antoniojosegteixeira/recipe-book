@@ -49,7 +49,12 @@ const SearchPage = ({ data, page }) => {
             return items.map((item) => {
               if (item !== "") {
                 return (
-                  <Grid item sx={{ minWidth: 50 }} key={item}>
+                  <Grid
+                    item
+                    sx={{ minWidth: 50 }}
+                    key={item}
+                    className="advanced-filter-box"
+                  >
                     <Typography
                       component="div"
                       variant="h6"
@@ -93,6 +98,7 @@ const SearchPage = ({ data, page }) => {
         <Typography
           variant="h6"
           sx={{ pl: { xs: 2, sm: 5, md: 7, lg: 9 }, pb: 2 }}
+          data-cy="filter-box-wrapper"
         >
           <Filters />
         </Typography>
