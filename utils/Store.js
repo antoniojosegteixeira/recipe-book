@@ -14,6 +14,7 @@ const initialState = {
     intolerances: [],
     diet: "",
   },
+  cookiesBool: false,
 };
 
 const reducer = (state, action) => {
@@ -47,6 +48,8 @@ const reducer = (state, action) => {
         },
       };
 
+    case "ACCEPT_COOKIES":
+      return { ...state, cookiesBool: true };
     default:
       return state;
   }

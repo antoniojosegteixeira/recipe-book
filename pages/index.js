@@ -13,15 +13,16 @@ import {
 import NextLink from "next/link";
 import Layout from "../components/Layout";
 import Image from "next/image";
-import { alpha } from "@mui/material/styles";
 import PopularCard from "../components/PopularCard";
 import CategoriesButtons from "../components/CategoriesButtons";
 import SearchBar from "../components/SearchBar";
 import TopBar from "../components/TopBar";
+import CookieBanner from "../components/CookieBanner";
 
 const Index = () => {
   return (
     <Layout>
+      <CookieBanner />
       <TopBar nosearch />
       <Box
         sx={{
