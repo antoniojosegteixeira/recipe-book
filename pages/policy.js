@@ -1,27 +1,11 @@
 import React from "react";
 import { useRouter } from "next/router";
-import NextLink from "next/link";
-import {
-  List,
-  ListItem,
-  Typography,
-  Button,
-  Card,
-  CardMedia,
-  CardContent,
-  CardActions,
-  Grid,
-  Container,
-  Link,
-  Pagination,
-  Box,
-} from "@mui/material";
+import { Typography, Grid, Container, Box } from "@mui/material";
 import Layout from "../components/Layout";
 import TopBar from "../components/TopBar";
 
-const PolicyPage = ({ data, page }) => {
+const PolicyPage = () => {
   const router = useRouter();
-  const { query } = router;
 
   return (
     <Layout>
@@ -31,18 +15,24 @@ const PolicyPage = ({ data, page }) => {
           variant="h6"
           sx={{ pl: { xs: 2, sm: 5, md: 7, lg: 9 }, pb: 2 }}
           id="search-results-text"
-        ></Typography>
+        >
+          asdsdaasd
+        </Typography>
         <Typography
           variant="h6"
           sx={{ pl: { xs: 2, sm: 5, md: 7, lg: 9 }, pb: 2 }}
           data-cy="filter-box-wrapper"
-        ></Typography>
+        >
+          aadsasdsad
+        </Typography>
         <Grid
           container
           spacing={3}
           justifyContent="center"
           id="search-card-grid"
-        ></Grid>
+        >
+          dsasadasd
+        </Grid>
         <Box
           sx={{
             width: "100%",
