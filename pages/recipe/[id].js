@@ -82,7 +82,7 @@ const Recipe = ({ data }) => {
 export default Recipe;
 
 export async function getServerSideProps(context) {
-  const mock = true;
+  const mock = false;
   let result;
   if (!mock) {
     const { params } = context;
