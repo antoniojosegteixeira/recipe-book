@@ -12,7 +12,7 @@ describe("Pagination", () => {
     cy.location("search").should("contain", "page=2");
   });
 
-  it.only("should get correct offset on pagination", () => {
+  it("should get correct offset on pagination", () => {
     cy.visit("/search?page=2")
       .its("__NEXT_DATA__.props.pageProps.data")
       .should((data) => {

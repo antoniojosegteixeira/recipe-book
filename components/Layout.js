@@ -50,7 +50,7 @@ export default function Layout({ children, title, sx }) {
             href="https://fonts.googleapis.com/css?family=Lora&display=swap"
           />
           <link
-            href="http://fonts.cdnfonts.com/css/your-dream"
+            href="https://fonts.cdnfonts.com/css/your-dream"
             rel="stylesheet"
           />
           <link
