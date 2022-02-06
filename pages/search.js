@@ -20,7 +20,6 @@ import {
 } from "@mui/material";
 import Layout from "../components/Layout";
 import TopBar from "../components/TopBar";
-import { search } from "../utils/mock";
 
 const SearchPage = ({ data, page }) => {
   const router = useRouter();
@@ -179,28 +178,23 @@ export async function getServerSideProps(context) {
   const { query } = context;
   const page = query.page ? query.page : 1;
 
-  const mock = false;
   let result;
 
-  if (!mock) {
-    const url = `${BASE_URL}/complexSearch`;
-    const options = {
-      params: {
-        ...query,
-        offset: page * 12,
-        number: 12,
-        apiKey: process.env.API_KEY,
-      },
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
+  const url = `${BASE_URL}/complexSearch`;
+  const options = {
+    params: {
+      ...query,
+      offset: page * 12,
+      number: 12,
+      apiKey: process.env.API_KEY,
+    },
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
 
-    const { data } = await axios.get(url, options);
-    result = data;
-  } else {
-    result = search;
-  }
+  const { data } = await axios.get(url, options);
+  result = data;
 
   return {
     props: {

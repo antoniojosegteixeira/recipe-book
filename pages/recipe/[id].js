@@ -9,7 +9,6 @@ import {
 } from "@mui/material";
 import { BASE_URL } from "../../utils/config";
 import axios from "axios";
-import { recipe } from "../../utils/mock";
 import Image from "next/image";
 import FavoriteButton from "../../components/FavoriteButton";
 import Layout from "../../components/Layout";
@@ -82,27 +81,22 @@ const Recipe = ({ data }) => {
 export default Recipe;
 
 export async function getServerSideProps(context) {
-  const mock = false;
   let result;
-  if (!mock) {
-    const { params } = context;
-    const { id } = params;
+  const { params } = context;
+  const { id } = params;
 
-    const url = `${BASE_URL}/${id}/information`;
-    const options = {
-      params: {
-        apiKey: process.env.API_KEY,
-      },
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
+  const url = `${BASE_URL}/${id}/information`;
+  const options = {
+    params: {
+      apiKey: process.env.API_KEY,
+    },
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
 
-    const { data } = await axios.get(url, options);
-    result = data;
-  } else {
-    result = recipe;
-  }
+  const { data } = await axios.get(url, options);
+  result = data;
 
   return {
     props: {
