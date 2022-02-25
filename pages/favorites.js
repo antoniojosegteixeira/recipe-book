@@ -12,7 +12,7 @@ import {
   ListItemButton,
 } from "@mui/material";
 import NextLink from "next/link";
-import { Store } from "../utils/Store";
+import { Store } from "../context/Store";
 import Layout from "../components/Layout";
 import TopBar from "../components/TopBar";
 import FavoriteButton from "../components/FavoriteButton";

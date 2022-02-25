@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import Store from "../utils/Store";
+import Store from "../context/Store";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Link from "@mui/material/Link";

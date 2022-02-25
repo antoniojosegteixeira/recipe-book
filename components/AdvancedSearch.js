@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { Store } from "../utils/Store";
+import { Store } from "../context/Store";
 import {
   Button,
   Modal,

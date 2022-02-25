@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-page-custom-font */
 import React, { useContext } from "react";
 import { useRouter } from "next/router";
-import { Store } from "../utils/Store";
+import { Store } from "../context/Store";
 import Head from "next/head";
 import {
   ThemeProvider,
