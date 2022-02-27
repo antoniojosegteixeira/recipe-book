@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { Store } from "../context/Store";
+import categories from "../utils/categories";
+
 import {
   Button,
   Modal,
@@ -21,7 +23,6 @@ import {
 } from "@mui/material";
 import ConfigIcon from "@mui/icons-material/Settings";
 import CloseIcon from "@mui/icons-material/Close";
-import categories from "../utils/categories";
 
 export default function AdvancedSearch() {
   const { state, dispatch } = useContext(Store);
@@ -79,18 +80,6 @@ export default function AdvancedSearch() {
       : setIntolerances([...intolerances, value]);
   };
 
-  const style = {
-    maxHeight: "100%",
-    maxWidth: 800,
-    bgcolor: "background.paper",
-    borderRadius: "7px",
-    boxShadow: 24,
-    p: { xs: 1, sm: 4 },
-    my: 1,
-    mx: 2,
-    overflowY: "scroll",
-  };
-
   return (
     <div>
       <Button
@@ -112,7 +101,19 @@ export default function AdvancedSearch() {
         }}
         id="advanced-search-modal"
       >
-        <Box sx={style}>
+        <Box
+          sx={{
+            maxHeight: "100%",
+            maxWidth: 800,
+            bgcolor: "background.paper",
+            borderRadius: "7px",
+            boxShadow: 24,
+            p: { xs: 1, sm: 4 },
+            my: 1,
+            mx: 2,
+            overflowY: "scroll",
+          }}
+        >
           <Container maxWidth={false} sx={{ position: "relative" }}>
             <IconButton
               sx={{
