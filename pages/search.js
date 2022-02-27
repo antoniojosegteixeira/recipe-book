@@ -21,9 +21,10 @@ import {
 import Layout from "../components/Layout";
 import TopBar from "../components/TopBar";
 
-const SearchPage = ({ data, page }) => {
+const SearchPage = ({ data }) => {
   const router = useRouter();
   const { query } = router;
+  const page = query.page ? query.page : 1;
 
   const handlePagination = (e, value) => {
     router.push({
