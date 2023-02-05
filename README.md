@@ -1,4 +1,4 @@
-# NEXT-RECIPE
+# Recipe Book
 
 This is a recipe website built with Next.js and powered by the Spoonacular API.
 
